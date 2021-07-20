@@ -14,7 +14,6 @@
             </strong>
             <span>Documentation</span>
         </a>
-        <sup>Beta</sup>
     </header>
 
     <!--
@@ -38,7 +37,7 @@
 </h1>
 
 <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">final</span> <span class="keyword">class</span> <span class="type">TestStore</span>&lt;<span class="variable">State</span>, <span class="variable">LocalState</span>, <span class="variable">Action</span>: <span class="type">Equatable</span>, <span class="variable">LocalAction</span>, <span class="variable">Environment</span>&gt; </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="attribute">final</span> <span class="keyword">class</span> <span class="type">TestStore</span>&lt;<span class="variable">State</span>, <span class="variable">LocalState</span>, <span class="variable">Action</span>, <span class="variable">LocalAction</span>, <span class="variable">Environment</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A testable runtime for a reducer.</p>
@@ -81,120 +80,121 @@ forces you to prove that effects will not cause any future changes to your state
 
 <p>For example, given a simple counter reducer:</p>
 
-<html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">CounterState</span> {
-  <span class="keyword">var</span> <span class="variable">count</span> = <span class="number literal">0</span>
-}
+<html><body><pre class="highlight"><code> <span class="keyword">struct</span> <span class="type">CounterState</span> {
+   <span class="keyword">var</span> <span class="variable">count</span> = <span class="number literal">0</span>
+ }
 
-<span class="keyword">enum</span> <span class="type">CounterAction</span>: <span class="type">Equatable</span> {
-  <span class="keyword">case</span> <span class="variable">decrementButtonTapped</span>
-  <span class="keyword">case</span> <span class="variable">incrementButtonTapped</span>
-}
+ <span class="keyword">enum</span> <span class="type">CounterAction</span>: <span class="type">Equatable</span> {
+   <span class="keyword">case</span> <span class="variable">decrementButtonTapped</span>
+   <span class="keyword">case</span> <span class="variable">incrementButtonTapped</span>
+ }
 
-<span class="keyword">let</span> <span class="variable">counterReducer</span> = <span class="variable">Reducer</span>&lt;<span class="type">CounterState</span>, <span class="type">CounterAction</span>, <span class="type">Void</span>&gt; { <span class="variable">state</span>, <span class="variable">action</span>, <span class="keyword">_</span> <span class="keyword">in</span>
-  <span class="keyword">switch</span> <span class="variable">action</span> {
-  <span class="keyword">case</span> .<span class="variable">decrementButtonTapped</span>:
-    <span class="type">state</span>.<span class="variable">count</span> -= <span class="number literal">1</span>
-    <span class="keyword">return</span> .<span class="variable">none</span>
+ <span class="keyword">let</span> <span class="variable">counterReducer</span> = <span class="variable">Reducer</span>&lt;<span class="type">CounterState</span>, <span class="type">CounterAction</span>, <span class="type">Void</span>&gt; { <span class="variable">state</span>, <span class="variable">action</span>, <span class="keyword">_</span> <span class="keyword">in</span>
+   <span class="keyword">switch</span> <span class="variable">action</span> {
+   <span class="keyword">case</span> .<span class="variable">decrementButtonTapped</span>:
+     <span class="type">state</span>.<span class="variable">count</span> -= <span class="number literal">1</span>
+     <span class="keyword">return</span> .<span class="variable">none</span>
 
-  <span class="keyword">case</span> .<span class="variable">incrementButtonTapped</span>:
-    <span class="type">state</span>.<span class="variable">count</span> += <span class="number literal">1</span>
-    <span class="keyword">return</span> .<span class="variable">none</span>
-  }
-}
+   <span class="keyword">case</span> .<span class="variable">incrementButtonTapped</span>:
+     <span class="type">state</span>.<span class="variable">count</span> += <span class="number literal">1</span>
+     <span class="keyword">return</span> .<span class="variable">none</span>
+   }
+ }
 </code></pre></body></html>
 <p>One can assert against its behavior over time:</p>
 
-<html><body><pre class="highlight"><code><span class="keyword">class</span> <span class="type">CounterTests</span>: <span class="type">XCTestCase</span> {
-  <span class="keyword">func</span> <span class="function">testCounter</span>() {
-    <span class="keyword">let</span> <span class="variable">store</span> = <span class="variable">TestStore</span>(
-      <span class="variable">initialState</span>: .<span class="variable">init</span>(<span class="variable">count</span>: <span class="number literal">0</span>),     <span class="comment">// GIVEN counter state of 0</span>
-      <span class="variable">reducer</span>: <span class="type">counterReducer</span>,
-      <span class="variable">environment</span>: ()
-    )
-    <span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">incrementButtonTapped</span>) { <span class="comment">// WHEN the increment button is tapped</span>
-      <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">1</span>                       <span class="comment">// THEN the count should be 1</span>
-    }
-  }
-}
+<html><body><pre class="highlight"><code> <span class="keyword">class</span> <span class="type">CounterTests</span>: <span class="type">XCTestCase</span> {
+   <span class="keyword">func</span> <span class="function">testCounter</span>() {
+     <span class="keyword">let</span> <span class="variable">store</span> = <span class="variable">TestStore</span>(
+       <span class="variable">initialState</span>: .<span class="variable">init</span>(<span class="variable">count</span>: <span class="number literal">0</span>),     <span class="comment">// GIVEN counter state of 0</span>
+       <span class="variable">reducer</span>: <span class="type">counterReducer</span>,
+       <span class="variable">environment</span>: ()
+     )
+     <span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">incrementButtonTapped</span>) { <span class="comment">// WHEN the increment button is tapped</span>
+       <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">1</span>                       <span class="comment">// THEN the count should be 1</span>
+     }
+   }
+ }
 </code></pre></body></html>
 <p>Note that in the trailing closure of <code>.send(.incrementButtonTapped)</code> we are given a single
 mutable value of the state before the action was sent, and it is our job to mutate the value
 to match the state after the action was sent. In this case the <code>count</code> field changes to <code>1</code>.</p>
 
 <p>For a more complex example, consider the following bare-bones search feature that uses the
-<code>.debounce</code> operator to wait for the user to stop typing before making a network request:</p>
+<code>Effect/debounce(id:for:scheduler:options:)</code> operator to wait for the user to stop typing
+before making a network request:</p>
 
-<html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">SearchState</span>: <span class="type">Equatable</span> {
-  <span class="keyword">var</span> <span class="variable">query</span> = <span class="string literal">"</span><span class="string literal"/><span class="string literal">"</span>
-  <span class="keyword">var</span> <span class="variable">results</span>: [<span class="type">String</span>] = []
-}
+<html><body><pre class="highlight"><code> <span class="keyword">struct</span> <span class="type">SearchState</span>: <span class="type">Equatable</span> {
+   <span class="keyword">var</span> <span class="variable">query</span> = <span class="string literal">"</span><span class="string literal"/><span class="string literal">"</span>
+   <span class="keyword">var</span> <span class="variable">results</span>: [<span class="type">String</span>] = []
+ }
 
-<span class="keyword">enum</span> <span class="type">SearchAction</span>: <span class="type">Equatable</span> {
-  <span class="keyword">case</span> <span class="variable">queryChanged</span>(<span class="type">String</span>)
-  <span class="keyword">case</span> <span class="variable">response</span>([<span class="type">String</span>])
-}
+ <span class="keyword">enum</span> <span class="type">SearchAction</span>: <span class="type">Equatable</span> {
+   <span class="keyword">case</span> <span class="variable">queryChanged</span>(<span class="type">String</span>)
+   <span class="keyword">case</span> <span class="variable">response</span>([<span class="type">String</span>])
+ }
 
-<span class="keyword">struct</span> <span class="type">SearchEnvironment</span> {
-  <span class="keyword">var</span> <span class="variable">mainQueue</span>: <span class="type">DateScheduler</span>
-  <span class="keyword">var</span> <span class="variable">request</span>: (<span class="type">String</span>) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;[<span class="type">String</span>], <span class="type">Never</span>&gt;
-}
+ <span class="keyword">struct</span> <span class="type">SearchEnvironment</span> {
+   <span class="keyword">var</span> <span class="variable">mainQueue</span>: <span class="type">DateScheduler</span>
+   <span class="keyword">var</span> <span class="variable">request</span>: (<span class="type">String</span>) -&gt; <a href="/reactiveswift-composable-architecture/Effect"><span class="type">Effect</span></a>&lt;[<span class="type">String</span>], <span class="type">Never</span>&gt;
+ }
 
-<span class="keyword">let</span> <span class="variable">searchReducer</span> = <span class="variable">Reducer</span>&lt;<span class="type">SearchState</span>, <span class="type">SearchAction</span>, <span class="type">SearchEnvironment</span>&gt; {
-  <span class="variable">state</span>, <span class="variable">action</span>, <span class="variable">environment</span> <span class="keyword">in</span>
+ <span class="keyword">let</span> <span class="variable">searchReducer</span> = <span class="variable">Reducer</span>&lt;<span class="type">SearchState</span>, <span class="type">SearchAction</span>, <span class="type">SearchEnvironment</span>&gt; {
+   <span class="variable">state</span>, <span class="variable">action</span>, <span class="variable">environment</span> <span class="keyword">in</span>
 
-    <span class="keyword">struct</span> <span class="type">SearchId</span>: <span class="type">Hashable</span> {}
+     <span class="keyword">struct</span> <span class="type">SearchId</span>: <span class="type">Hashable</span> {}
 
-    <span class="keyword">switch</span> <span class="variable">action</span> {
-    <span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">queryChanged</span>(<span class="variable">query</span>):
-      <span class="type">state</span>.<span class="variable">query</span> = <span class="variable">query</span>
-      <span class="keyword">return</span> <span class="variable">environment</span>.<span class="variable">request</span>(<span class="keyword">self</span>.<span class="variable">query</span>)
-        .<span class="variable">debounce</span>(<span class="variable">id</span>: <span class="type">SearchId</span>(), <span class="variable">interval</span>: <span class="number literal">0.5</span>, <span class="variable">scheduler</span>: <span class="type">environment</span>.<span class="variable">mainQueue</span>)
+     <span class="keyword">switch</span> <span class="variable">action</span> {
+     <span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">queryChanged</span>(<span class="variable">query</span>):
+       <span class="type">state</span>.<span class="variable">query</span> = <span class="variable">query</span>
+       <span class="keyword">return</span> <span class="variable">environment</span>.<span class="variable">request</span>(<span class="keyword">self</span>.<span class="variable">query</span>)
+         .<span class="variable">debounce</span>(<span class="variable">id</span>: <span class="type">SearchId</span>(), <span class="variable">interval</span>: <span class="number literal">0.5</span>, <span class="variable">scheduler</span>: <span class="type">environment</span>.<span class="variable">mainQueue</span>)
 
-    <span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">response</span>(<span class="variable">results</span>):
-      <span class="type">state</span>.<span class="variable">results</span> = <span class="variable">results</span>
-      <span class="keyword">return</span> .<span class="variable">none</span>
-    }
-}
+     <span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">response</span>(<span class="variable">results</span>):
+       <span class="type">state</span>.<span class="variable">results</span> = <span class="variable">results</span>
+       <span class="keyword">return</span> .<span class="variable">none</span>
+     }
+ }
 </code></pre></body></html>
 <p>It can be fully tested by controlling the environment's scheduler and effect:</p>
 
-<html><body><pre class="highlight"><code><span class="comment">// Create a test dispatch scheduler to control the timing of effects</span>
-<span class="keyword">let</span> <span class="variable">scheduler</span> = <span class="variable">TestScheduler</span>()
+<html><body><pre class="highlight"><code> <span class="comment">// Create a test dispatch scheduler to control the timing of effects</span>
+ <span class="keyword">let</span> <span class="variable">scheduler</span> = <span class="variable">TestScheduler</span>()
 
-<span class="keyword">let</span> <span class="variable">store</span> = <span class="variable">TestStore</span>(
-  <span class="variable">initialState</span>: <span class="type">SearchState</span>(),
-  <span class="variable">reducer</span>: <span class="type">searchReducer</span>,
-  <span class="variable">environment</span>: <span class="type">SearchEnvironment</span>(
-    <span class="variable">mainQueue</span>: <span class="type">scheduler</span>,
-    <span class="comment">// Simulate a search response with one item</span>
-    <span class="variable">request</span>: { <span class="keyword">_</span> <span class="keyword">in</span> <span class="variable">Effect</span>(<span class="variable">value</span>: [<span class="string literal">"</span><span class="string literal">Composable Architecture</span><span class="string literal">"</span>]) }
-  )
-)
+ <span class="keyword">let</span> <span class="variable">store</span> = <span class="variable">TestStore</span>(
+   <span class="variable">initialState</span>: <span class="type">SearchState</span>(),
+   <span class="variable">reducer</span>: <span class="type">searchReducer</span>,
+   <span class="variable">environment</span>: <span class="type">SearchEnvironment</span>(
+     <span class="variable">mainQueue</span>: <span class="type">scheduler</span>,
+     <span class="comment">// Simulate a search response with one item</span>
+     <span class="variable">request</span>: { <span class="keyword">_</span> <span class="keyword">in</span> <span class="variable">Effect</span>(<span class="variable">value</span>: [<span class="string literal">"</span><span class="string literal">Composable Architecture</span><span class="string literal">"</span>]) }
+   )
+ )
 
-<span class="comment">// Change the query</span>
-<span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">searchFieldChanged</span>(<span class="string literal">"</span><span class="string literal">c</span><span class="string literal">"</span>) {
-  <span class="comment">// Assert that state updates accordingly</span>
-  <span class="variable">$0</span>.<span class="variable">query</span> = <span class="string literal">"</span><span class="string literal">c</span><span class="string literal">"</span>
-}
+ <span class="comment">// Change the query</span>
+ <span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">searchFieldChanged</span>(<span class="string literal">"</span><span class="string literal">c</span><span class="string literal">"</span>) {
+   <span class="comment">// Assert that state updates accordingly</span>
+   <span class="variable">$0</span>.<span class="variable">query</span> = <span class="string literal">"</span><span class="string literal">c</span><span class="string literal">"</span>
+ }
 
-<span class="comment">// Advance the scheduler by a period shorter than the debounce</span>
-<span class="variable">scheduler</span>.<span class="variable">advance</span>(<span class="variable">by</span>: .<span class="variable">millseconds</span>(<span class="number literal">250</span>))
+ <span class="comment">// Advance the scheduler by a period shorter than the debounce</span>
+ <span class="variable">scheduler</span>.<span class="variable">advance</span>(<span class="variable">by</span>: .<span class="variable">millseconds</span>(<span class="number literal">250</span>))
 
-<span class="comment">// Change the query again</span>
-<span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">searchFieldChanged</span>(<span class="string literal">"co"</span>) {
-  <span class="variable">$0</span>.<span class="variable">query</span> = <span class="string literal">"co"</span>
-}
+ <span class="comment">// Change the query again</span>
+ <span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">searchFieldChanged</span>(<span class="string literal">"co"</span>) {
+   <span class="variable">$0</span>.<span class="variable">query</span> = <span class="string literal">"co"</span>
+ }
 
-<span class="comment">// Advance the scheduler by a period shorter than the debounce</span>
-<span class="variable">scheduler</span>.<span class="variable">advance</span>(<span class="variable">by</span>: .<span class="variable">millseconds</span>(<span class="number literal">250</span>))
-<span class="comment">// Advance the scheduler to the debounce</span>
-<span class="variable">scheduler</span>.<span class="variable">advance</span>(<span class="variable">by</span>: .<span class="variable">millseconds</span>(<span class="number literal">250</span>))
+ <span class="comment">// Advance the scheduler by a period shorter than the debounce</span>
+ <span class="variable">scheduler</span>.<span class="variable">advance</span>(<span class="variable">by</span>: .<span class="variable">millseconds</span>(<span class="number literal">250</span>))
+ <span class="comment">// Advance the scheduler to the debounce</span>
+ <span class="variable">scheduler</span>.<span class="variable">advance</span>(<span class="variable">by</span>: .<span class="variable">millseconds</span>(<span class="number literal">250</span>))
 
-<span class="comment">// Assert that the expected response is received</span>
-<span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">response</span>([<span class="string literal">"Composable Architecture"</span>])) {
-  <span class="comment">// Assert that state updates accordingly</span>
-  <span class="variable">$0</span>.<span class="variable">results</span> = [<span class="string literal">"Composable Architecture"</span>]
-}
+ <span class="comment">// Assert that the expected response is received</span>
+ <span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">response</span>([<span class="string literal">"Composable Architecture"</span>])) {
+   <span class="comment">// Assert that state updates accordingly</span>
+   <span class="variable">$0</span>.<span class="variable">results</span> = [<span class="string literal">"Composable Architecture"</span>]
+ }
 </code></pre></body></html>
 <p>This test is proving that the debounced network requests are correctly canceled when we do not
 wait longer than the 0.5 seconds, because if it wasn't and it delivered an action when we did
@@ -216,10 +216,10 @@ not expect it would cause a test failure.</p>
 
         <div role="article" class="variable" id="teststore.environment">
     <h3>
-        <code>environment</code>
+        <code><a href="#teststore.environment">environment</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">environment</span>: <span class="type">Environment</span></code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">environment</span>: <span class="type">Environment</span></body></html></code></pre>
 </div>
 </div>
     </section>
@@ -228,13 +228,13 @@ not expect it would cause a test failure.</p>
 
         <div role="article" class="function" id="teststore.scope(state:action:)">
     <h3>
-        <code>scope(state:​action:​)</code>
+        <code><a href="#teststore.scope(state:action:)">scope(state:​action:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">S</span>, <span class="variable">A</span>&gt;(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">S</span>, <span class="variable">A</span>&gt;(
       <span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">LocalState</span>) -&gt; <span class="type">S</span>,
       <span class="variable">action</span> <span class="variable">fromLocalAction</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">A</span>) -&gt; <span class="type">LocalAction</span>
-    ) -&gt; <span class="type">TestStore</span>&lt;<span class="type">State</span>, <span class="type">S</span>, <span class="type">Action</span>, <span class="type">A</span>, <span class="type">Environment</span>&gt; </code></pre>
+    ) -&gt; <a href="/reactiveswift-composable-architecture/TestStore"><span class="type">TestStore</span></a>&lt;<span class="type">State</span>, <span class="type">S</span>, <span class="type">Action</span>, <span class="type">A</span>, <span class="type">Environment</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Scopes a store to assert against more local state and actions.</p>
@@ -272,12 +272,12 @@ not expect it would cause a test failure.</p>
 </div>
 <div role="article" class="function" id="teststore.scope(state:)">
     <h3>
-        <code>scope(state:​)</code>
+        <code><a href="#teststore.scope(state:)">scope(state:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">S</span>&gt;(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">S</span>&gt;(
       <span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">LocalState</span>) -&gt; <span class="type">S</span>
-    ) -&gt; <span class="type">TestStore</span>&lt;<span class="type">State</span>, <span class="type">S</span>, <span class="type">Action</span>, <span class="type">LocalAction</span>, <span class="type">Environment</span>&gt; </code></pre>
+    ) -&gt; <a href="/reactiveswift-composable-architecture/TestStore"><span class="type">TestStore</span></a>&lt;<span class="type">State</span>, <span class="type">S</span>, <span class="type">Action</span>, <span class="type">LocalAction</span>, <span class="type">Environment</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Scopes a store to assert against more local state.</p>
@@ -316,7 +316,7 @@ not expect it would cause a test failure.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2021-04-27T09:43:55+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
+    Generated on <time datetime="2021-07-20T18:24:59+0000">July 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>

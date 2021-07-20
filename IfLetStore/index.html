@@ -14,7 +14,6 @@
             </strong>
             <span>Documentation</span>
         </a>
-        <sup>Beta</sup>
     </header>
 
     <!--
@@ -38,16 +37,16 @@
 </h1>
 
 <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">OSX</span> <span class="number literal">10.15</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
-  <span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">IfLetStore</span>&lt;<span class="variable">State</span>, <span class="variable">Action</span>, <span class="variable">Content</span>&gt;: <span class="type">View</span> <span class="keyword">where</span> <span class="type">Content</span>: <span class="type">View</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">OSX</span> <span class="number literal">10.15</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+  <span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">IfLetStore</span>&lt;<span class="variable">State</span>, <span class="variable">Action</span>, <span class="variable">Content</span>&gt;: <span class="type">View</span> <span class="keyword">where</span> <span class="type">Content</span>: <span class="type">View</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A view that safely unwraps a store of optional state in order to show one of two views.</p>
 
 </div>
 <div class="discussion">
-    <p>When the underlying state is non-<code>nil</code>, the <code>then</code> closure will be performed with a <code>Store</code> that
-holds onto non-optional state, and otherwise the <code>else</code> closure will be performed.</p>
+    <p>When the underlying state is non-<code>nil</code>, the <code>then</code> closure will be performed with a <code>Store</code>
+that holds onto non-optional state, and otherwise the <code>else</code> closure will be performed.</p>
 
 <p>This is useful for deciding between two views to show depending on an optional piece of state:</p>
 
@@ -59,18 +58,18 @@ holds onto non-optional state, and otherwise the <code>else</code> closure will 
 </code></pre></body></html>
 <p>And for performing navigation when a piece of state becomes non-<code>nil</code>:</p>
 
-<html><body><pre class="highlight"><code> <span class="variable">NavigationLink</span>(
-   <span class="variable">destination</span>: <span class="type">IfLetStore</span>(
-     <span class="keyword">self</span>.<span class="variable">store</span>.<span class="variable">scope</span>(<span class="variable">state</span>: \.<span class="variable">detail</span>, <span class="variable">action</span>: <span class="type">AppAction</span>.<span class="variable">detail</span>),
-     <span class="variable">then</span>: <span class="type">DetailView</span>.<span class="variable">init</span>(<span class="variable">store</span>:)
-   ),
-   <span class="variable">isActive</span>: <span class="type">viewStore</span>.<span class="variable">binding</span>(
-     <span class="variable">get</span>: \.<span class="variable">isGameActive</span>,
-     <span class="variable">send</span>: { <span class="variable">$0</span> ? .<span class="variable">startButtonTapped</span> : .<span class="variable">detailDismissed</span> }
-   )
- ) {
-   <span class="variable">Text</span>(<span class="string literal">"</span><span class="string literal">Start!</span><span class="string literal">"</span>)
- }
+<html><body><pre class="highlight"><code><span class="variable">NavigationLink</span>(
+  <span class="variable">destination</span>: <span class="type">IfLetStore</span>(
+    <span class="keyword">self</span>.<span class="variable">store</span>.<span class="variable">scope</span>(<span class="variable">state</span>: \.<span class="variable">detail</span>, <span class="variable">action</span>: <span class="type">AppAction</span>.<span class="variable">detail</span>),
+    <span class="variable">then</span>: <span class="type">DetailView</span>.<span class="variable">init</span>(<span class="variable">store</span>:)
+  ),
+  <span class="variable">isActive</span>: <span class="type">viewStore</span>.<span class="variable">binding</span>(
+    <span class="variable">get</span>: \.<span class="variable">isGameActive</span>,
+    <span class="variable">send</span>: { <span class="variable">$0</span> ? .<span class="variable">startButtonTapped</span> : .<span class="variable">detailDismissed</span> }
+  )
+) {
+  <span class="variable">Text</span>(<span class="string literal">"</span><span class="string literal">Start!</span><span class="string literal">"</span>)
+}
 </code></pre></body></html>
 </div>
 <section id="relationships">
@@ -81,11 +80,11 @@ holds onto non-optional state, and otherwise the <code>else</code> closure will 
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
-<!-- Title: %89 Pages: 1 -->
+<!-- Title: %17 Pages: 1 -->
 <svg width="872pt" height="116pt"
  viewBox="0.00 0.00 872.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
-<title>%89</title>
+<title>%17</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-112 868,-112 868,4 -4,4"/>
 <!-- IfLetStore -->
 <g id="node1" class="node structure current">
@@ -124,27 +123,27 @@ holds onto non-optional state, and otherwise the <code>else</code> closure will 
 
         <div role="article" class="initializer" id="ifletstore.init(_:then:else:)">
     <h3>
-        <code>init(_:​then:​else:​)</code>
+        <code><a href="#ifletstore.init(_:then:else:)">init(_:​then:​else:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">&quot;&apos;else&apos; now takes a view builder closure&quot;</span>)
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">"'else' now takes a view builder closure"</span>)
     <span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">IfContent</span>, <span class="variable">ElseContent</span>&gt;(
-      <span class="keyword">_</span> <span class="variable">store</span>: <span class="type">Store</span>&lt;<span class="type">State</span>?, <span class="type">Action</span>&gt;,
-      <span class="attribute">@</span><span class="type">ViewBuilder</span> <span class="variable">then</span> <span class="variable">ifContent</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Store</span>&lt;<span class="type">State</span>, <span class="type">Action</span>&gt;) -&gt; <span class="type">IfContent</span>,
+      <span class="keyword">_</span> <span class="variable">store</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">State</span>?, <span class="type">Action</span>&gt;,
+      <span class="attribute">@</span><span class="type">ViewBuilder</span> <span class="variable">then</span> <span class="variable">ifContent</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">State</span>, <span class="type">Action</span>&gt;) -&gt; <span class="type">IfContent</span>,
       <span class="variable">else</span> <span class="variable">elseContent</span>: <span class="attribute">@</span><span class="attribute">escaping</span> <span class="attribute">@</span><span class="attribute">autoclosure</span> () -&gt; <span class="type">ElseContent</span>
-    ) <span class="keyword">where</span> <span class="type">Content</span> == <span class="type">_ConditionalContent</span>&lt;<span class="type">IfContent</span>, <span class="type">ElseContent</span>&gt; </code></pre>
+    ) <span class="keyword">where</span> <span class="type">Content</span> == <span class="type">_ConditionalContent</span>&lt;<span class="type">IfContent</span>, <span class="type">ElseContent</span>&gt;  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="initializer" id="ifletstore.init(_:then:else:)">
     <h3>
-        <code>init(_:​then:​else:​)</code>
+        <code><a href="#ifletstore.init(_:then:else:)">init(_:​then:​else:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">IfContent</span>, <span class="variable">ElseContent</span>&gt;(
-      <span class="keyword">_</span> <span class="variable">store</span>: <span class="type">Store</span>&lt;<span class="type">State</span>?, <span class="type">Action</span>&gt;,
-      <span class="attribute">@</span><span class="type">ViewBuilder</span> <span class="variable">then</span> <span class="variable">ifContent</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Store</span>&lt;<span class="type">State</span>, <span class="type">Action</span>&gt;) -&gt; <span class="type">IfContent</span>,
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">IfContent</span>, <span class="variable">ElseContent</span>&gt;(
+      <span class="keyword">_</span> <span class="variable">store</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">State</span>?, <span class="type">Action</span>&gt;,
+      <span class="attribute">@</span><span class="type">ViewBuilder</span> <span class="variable">then</span> <span class="variable">ifContent</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">State</span>, <span class="type">Action</span>&gt;) -&gt; <span class="type">IfContent</span>,
       <span class="attribute">@</span><span class="type">ViewBuilder</span> <span class="variable">else</span> <span class="variable">elseContent</span>: <span class="attribute">@</span><span class="attribute">escaping</span> () -&gt; <span class="type">ElseContent</span>
-    ) <span class="keyword">where</span> <span class="type">Content</span> == <span class="type">_ConditionalContent</span>&lt;<span class="type">IfContent</span>, <span class="type">ElseContent</span>&gt; </code></pre>
+    ) <span class="keyword">where</span> <span class="type">Content</span> == <span class="type">_ConditionalContent</span>&lt;<span class="type">IfContent</span>, <span class="type">ElseContent</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Initializes an <code>IfLetStore</code> view that computes content depending on if a store of optional
@@ -185,13 +184,13 @@ state is <code>nil</code> or non-<code>nil</code>.</p>
 </div>
 <div role="article" class="initializer" id="ifletstore.init(_:then:)">
     <h3>
-        <code>init(_:​then:​)</code>
+        <code><a href="#ifletstore.init(_:then:)">init(_:​then:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">IfContent</span>&gt;(
-      <span class="keyword">_</span> <span class="variable">store</span>: <span class="type">Store</span>&lt;<span class="type">State</span>?, <span class="type">Action</span>&gt;,
-      <span class="attribute">@</span><span class="type">ViewBuilder</span> <span class="variable">then</span> <span class="variable">ifContent</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Store</span>&lt;<span class="type">State</span>, <span class="type">Action</span>&gt;) -&gt; <span class="type">IfContent</span>
-    ) <span class="keyword">where</span> <span class="type">Content</span> == <span class="type">IfContent</span>? </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">IfContent</span>&gt;(
+      <span class="keyword">_</span> <span class="variable">store</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">State</span>?, <span class="type">Action</span>&gt;,
+      <span class="attribute">@</span><span class="type">ViewBuilder</span> <span class="variable">then</span> <span class="variable">ifContent</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">State</span>, <span class="type">Action</span>&gt;) -&gt; <span class="type">IfContent</span>
+    ) <span class="keyword">where</span> <span class="type">Content</span> == <span class="type">IfContent</span>?  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Initializes an <code>IfLetStore</code> view that computes content depending on if a store of optional
@@ -230,10 +229,10 @@ state is <code>nil</code> or non-<code>nil</code>.</p>
 
         <div role="article" class="variable" id="ifletstore.body">
     <h3>
-        <code>body</code>
+        <code><a href="#ifletstore.body">body</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span>  </body></html></code></pre>
 </div>
 </div>
     </section>
@@ -245,7 +244,7 @@ state is <code>nil</code> or non-<code>nil</code>.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2021-04-27T09:43:55+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
+    Generated on <time datetime="2021-07-20T18:24:59+0000">July 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>

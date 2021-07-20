@@ -14,7 +14,6 @@
             </strong>
             <span>Documentation</span>
         </a>
-        <sup>Beta</sup>
     </header>
 
     <!--
@@ -38,7 +37,7 @@
 </h1>
 
 <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">Step</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">Step</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A single step of a <code>TestStore</code> assertion.</p>
@@ -59,15 +58,15 @@
 
         <div role="article" class="function" id="teststore.step.send(_:file:line:_:)">
     <h3>
-        <code>send(_:​file:​line:​_:​)</code>
+        <code><a href="#teststore.step.send(_:file:line:_:)">send(_:​file:​line:​_:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">send</span>(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">send</span>(
         <span class="keyword">_</span> <span class="variable">action</span>: <span class="type">LocalAction</span>,
         <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>,
         <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>,
         <span class="keyword">_</span> <span class="variable">update</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">inout</span> <span class="type">LocalState</span>) <span class="keyword">throws</span> -&gt; <span class="type">Void</span> = { <span class="keyword">_</span> <span class="keyword">in</span> }
-      ) -&gt; <span class="type">Step</span> </code></pre>
+      ) -&gt; <span class="type">Step</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A step that describes an action sent to a store and asserts against how the store's state
@@ -105,15 +104,15 @@ is expected to change.</p>
 </div>
 <div role="article" class="function" id="teststore.step.receive(_:file:line:_:)">
     <h3>
-        <code>receive(_:​file:​line:​_:​)</code>
+        <code><a href="#teststore.step.receive(_:file:line:_:)">receive(_:​file:​line:​_:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">receive</span>(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">receive</span>(
         <span class="keyword">_</span> <span class="variable">action</span>: <span class="type">Action</span>,
         <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>,
         <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>,
         <span class="keyword">_</span> <span class="variable">update</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">inout</span> <span class="type">LocalState</span>) <span class="keyword">throws</span> -&gt; <span class="type">Void</span> = { <span class="keyword">_</span> <span class="keyword">in</span> }
-      ) -&gt; <span class="type">Step</span> </code></pre>
+      ) -&gt; <span class="type">Step</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A step that describes an action received by an effect and asserts against how the store's
@@ -151,14 +150,14 @@ state is expected to change.</p>
 </div>
 <div role="article" class="function" id="teststore.step.environment(file:line:_:)">
     <h3>
-        <code>environment(file:​line:​_:​)</code>
+        <code><a href="#teststore.step.environment(file:line:_:)">environment(file:​line:​_:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">environment</span>(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">environment</span>(
         <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>,
         <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>,
         <span class="keyword">_</span> <span class="variable">update</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">inout</span> <span class="type">Environment</span>) <span class="keyword">throws</span> -&gt; <span class="type">Void</span>
-      ) -&gt; <span class="type">Step</span> </code></pre>
+      ) -&gt; <span class="type">Step</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A step that updates a test store's environment.</p>
@@ -189,14 +188,14 @@ state is expected to change.</p>
 </div>
 <div role="article" class="function" id="teststore.step.`do`(file:line:_:)">
     <h3>
-        <code>`do`(file:​line:​_:​)</code>
+        <code><a href="#teststore.step.`do`(file:line:_:)">`do`(file:​line:​_:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">`do`</span>(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">`do`</span>(
         <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>,
         <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>,
         <span class="keyword">_</span> <span class="variable">work</span>: <span class="attribute">@</span><span class="attribute">escaping</span> () <span class="keyword">throws</span> -&gt; <span class="type">Void</span>
-      ) -&gt; <span class="type">Step</span> </code></pre>
+      ) -&gt; <span class="type">Step</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A step that captures some work to be done between assertions</p>
@@ -227,14 +226,14 @@ state is expected to change.</p>
 </div>
 <div role="article" class="function" id="teststore.step.sequence(_:file:line:)">
     <h3>
-        <code>sequence(_:​file:​line:​)</code>
+        <code><a href="#teststore.step.sequence(_:file:line:)">sequence(_:​file:​line:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">sequence</span>(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">sequence</span>(
         <span class="keyword">_</span> <span class="variable">steps</span>: [<span class="type">Step</span>],
         <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>,
         <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>
-      ) -&gt; <span class="type">Step</span> </code></pre>
+      ) -&gt; <span class="type">Step</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A step that captures a sub-sequence of steps.</p>
@@ -254,7 +253,7 @@ state is expected to change.</p>
     <tr>
     <th>steps</th>
     <td><code class="type">[Step]</code></td>
-    <td><p>An array of <code>Step</code></p>
+    <td><p>An array of <code>TestStore/Step</code></p>
 </td>
 </tr>
   </tbody>
@@ -265,14 +264,14 @@ state is expected to change.</p>
 </div>
 <div role="article" class="function" id="teststore.step.sequence(_:file:line:)">
     <h3>
-        <code>sequence(_:​file:​line:​)</code>
+        <code><a href="#teststore.step.sequence(_:file:line:)">sequence(_:​file:​line:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">sequence</span>(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">sequence</span>(
         <span class="keyword">_</span> <span class="variable">steps</span>: <span class="type">Step</span>...,
         <span class="variable">file</span>: <span class="type">StaticString</span> = <span class="keyword">#file</span>,
         <span class="variable">line</span>: <span class="type">UInt</span> = <span class="keyword">#line</span>
-      ) -&gt; <span class="type">Step</span> </code></pre>
+      ) -&gt; <span class="type">Step</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A step that captures a sub-sequence of steps.</p>
@@ -292,7 +291,7 @@ state is expected to change.</p>
     <tr>
     <th>steps</th>
     <td><code class="type">Step</code></td>
-    <td><p>A variadic list of <code>Step</code></p>
+    <td><p>A variadic list of <code>TestStore/Step</code></p>
 </td>
 </tr>
   </tbody>
@@ -310,7 +309,7 @@ state is expected to change.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2021-04-27T09:43:55+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
+    Generated on <time datetime="2021-07-20T18:24:59+0000">July 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>

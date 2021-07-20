@@ -14,7 +14,6 @@
             </strong>
             <span>Documentation</span>
         </a>
-        <sup>Beta</sup>
     </header>
 
     <!--
@@ -26,7 +25,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#effect.none">none</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#effect.fireandforget(_:)">fire​And​Forget(_:​)</a></li><li class="function"><a href="#effect.concatenate(_:)">concatenate(_:​)</a></li><li class="function"><a href="#effect.concatenate(_:)">concatenate(_:​)</a></li><li class="function"><a href="#effect.deferred(_:)">deferred(_:​)</a></li><li class="function"><a href="#effect.future(_:)">future(_:​)</a></li><li class="function"><a href="#effect.catchtoeffect()">catch​ToEffect()</a></li><li class="function"><a href="#effect.fireandforget(outputtype:failuretype:)">fire​And​Forget(output​Type:​failure​Type:​)</a></li><li class="function"><a href="#effect.assign(to:on:)">assign(to:​on:​)</a></li><li class="function"><a href="#effect.cancellable(id:cancelinflight:)">cancellable(id:​cancel​InFlight:​)</a></li><li class="function"><a href="#effect.cancel(id:)">cancel(id:​)</a></li><li class="function"><a href="#effect.timer(id:every:tolerance:on:)">timer(id:​every:​tolerance:​on:​)</a></li><li class="function"><a href="#effect.debounce(id:interval:scheduler:)">debounce(id:​interval:​scheduler:​)</a></li></ul></li></ol>
+            <ol><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#effect.none">none</a></li></ul></li><li><a href="#methods">Methods</a><ul><li class="function"><a href="#effect.fireandforget(_:)">fire​And​Forget(_:​)</a></li><li class="function"><a href="#effect.concatenate(_:)">concatenate(_:​)</a></li><li class="function"><a href="#effect.concatenate(_:)">concatenate(_:​)</a></li><li class="function"><a href="#effect.deferred(_:)">deferred(_:​)</a></li><li class="function"><a href="#effect.future(_:)">future(_:​)</a></li><li class="function"><a href="#effect.catchtoeffect()">catch​ToEffect()</a></li><li class="function"><a href="#effect.fireandforget(outputtype:failuretype:)">fire​And​Forget(output​Type:​failure​Type:​)</a></li><li class="function"><a href="#effect.assign(to:on:)">assign(to:​on:​)</a></li><li class="function"><a href="#effect.timer(id:every:tolerance:on:)">timer(id:​every:​tolerance:​on:​)</a></li><li class="function"><a href="#effect.throttle(id:for:scheduler:latest:)">throttle(id:​for:​scheduler:​latest:​)</a></li><li class="function"><a href="#effect.debounce(id:for:scheduler:)">debounce(id:​for:​scheduler:​)</a></li><li class="function"><a href="#effect.cancellable(id:cancelinflight:)">cancellable(id:​cancel​InFlight:​)</a></li><li class="function"><a href="#effect.cancel(id:)">cancel(id:​)</a></li><li class="function"><a href="#effect.deferred(for:scheduler:)">deferred(for:​scheduler:​)</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -41,10 +40,10 @@
 
         <div role="article" class="variable" id="effect.none">
     <h3>
-        <code>none</code>
+        <code><a href="#effect.none">none</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">var</span> <span class="variable">none</span>: <span class="type">Effect</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">var</span> <span class="variable">none</span>: <span class="type">Effect</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>An effect that does nothing and completes immediately. Useful for situations where you must
@@ -58,10 +57,10 @@ return an effect, but you don't need to do anything.</p>
 
         <div role="article" class="function" id="effect.fireandforget(_:)">
     <h3>
-        <code>fire​And​Forget(_:​)</code>
+        <code><a href="#effect.fireandforget(_:)">fire​And​Forget(_:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">fireAndForget</span>(<span class="keyword">_</span> <span class="variable">work</span>: <span class="attribute">@</span><span class="attribute">escaping</span> () -&gt; <span class="type">Void</span>) -&gt; <span class="type">Effect</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">fireAndForget</span>(<span class="keyword">_</span> <span class="variable">work</span>: <span class="attribute">@</span><span class="attribute">escaping</span> () -&gt; <span class="type">Void</span>) -&gt; <span class="type">Effect</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Creates an effect that executes some work in the real world that doesn't need to feed data
@@ -93,10 +92,10 @@ back into the store.</p>
 </div>
 <div role="article" class="function" id="effect.concatenate(_:)">
     <h3>
-        <code>concatenate(_:​)</code>
+        <code><a href="#effect.concatenate(_:)">concatenate(_:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">concatenate</span>(<span class="keyword">_</span> <span class="variable">effects</span>: <span class="type">Effect</span>...) -&gt; <span class="type">Effect</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">concatenate</span>(<span class="keyword">_</span> <span class="variable">effects</span>: <span class="type">Effect</span>...) -&gt; <span class="type">Effect</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Concatenates a variadic list of effects together into a single effect, which runs the effects
@@ -128,12 +127,12 @@ one after the other.</p>
 </div>
 <div role="article" class="function" id="effect.concatenate(_:)">
     <h3>
-        <code>concatenate(_:​)</code>
+        <code><a href="#effect.concatenate(_:)">concatenate(_:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">concatenate</span>&lt;<span class="variable">C</span>: <span class="type">Collection</span>&gt;(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">concatenate</span>&lt;<span class="variable">C</span>: <span class="type">Collection</span>&gt;(
     <span class="keyword">_</span> <span class="variable">effects</span>: <span class="type">C</span>
-  ) -&gt; <span class="type">Effect</span> <span class="keyword">where</span> <span class="type">C</span>.<span class="type">Element</span> == <span class="type">Effect</span> </code></pre>
+  ) -&gt; <span class="type">Effect</span> <span class="keyword">where</span> <span class="type">C</span>.<span class="type">Element</span> == <span class="type">Effect</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Concatenates a collection of effects together into a single effect, which runs the effects one
@@ -165,27 +164,27 @@ after the other.</p>
 </div>
 <div role="article" class="function" id="effect.deferred(_:)">
     <h3>
-        <code>deferred(_:​)</code>
+        <code><a href="#effect.deferred(_:)">deferred(_:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">deferred</span>(<span class="keyword">_</span> <span class="variable">createProducer</span>: <span class="attribute">@</span><span class="attribute">escaping</span> () -&gt; <span class="type">SignalProducer</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;)
-    -&gt; <span class="type">SignalProducer</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;</code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">deferred</span>(<span class="keyword">_</span> <span class="variable">createProducer</span>: <span class="attribute">@</span><span class="attribute">escaping</span> () -&gt; <span class="type">SignalProducer</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;)
+    -&gt; <span class="type">SignalProducer</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;</body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
-    <p>An Effect that waits until it is started before running
-the supplied closure to create a new Effect, whose values
+    <p>An <code>Effect</code> that waits until it is started before running
+the supplied closure to create a new <code>Effect</code>, whose values
 are then sent to the subscriber of this effect.</p>
 
 </div>
 </div>
 <div role="article" class="function" id="effect.future(_:)">
     <h3>
-        <code>future(_:​)</code>
+        <code><a href="#effect.future(_:)">future(_:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">future</span>(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">future</span>(
     <span class="keyword">_</span> <span class="variable">attemptToFulfill</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Result</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;) -&gt; <span class="type">Void</span>) -&gt; <span class="type">Void</span>
-  ) -&gt; <span class="type">Effect</span> </code></pre>
+  ) -&gt; <span class="type">Effect</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Creates an effect that can supply a single value asynchronously in the future.</p>
@@ -207,11 +206,11 @@ are then sent to the subscriber of this effect.</p>
 discarded:</p>
 
 <html><body><pre class="highlight"><code><span class="variable">Effect</span>&lt;<span class="type">Int</span>, <span class="type">Never</span>&gt;.<span class="variable">future</span> { <span class="variable">callback</span> <span class="keyword">in</span>
-  <span class="variable">DispatchQueue</span>.<span class="variable">main</span>.<span class="variable">asyncAfter</span>(<span class="variable">deadline</span>: .<span class="variable">now</span>() + <span class="number literal">1</span>) {
-    <span class="variable">callback</span>(.<span class="variable">success</span>(<span class="number literal">42</span>))
-    <span class="variable">callback</span>(.<span class="variable">success</span>(<span class="number literal">1729</span>)) <span class="comment">// Will not be emitted by the effect</span>
-  }
+<span class="variable">DispatchQueue</span>.<span class="variable">main</span>.<span class="variable">asyncAfter</span>(<span class="variable">deadline</span>: .<span class="variable">now</span>() + <span class="number literal">1</span>) {
+ <span class="variable">callback</span>(.<span class="variable">success</span>(<span class="number literal">42</span>))
+ <span class="variable">callback</span>(.<span class="variable">success</span>(<span class="number literal">1729</span>)) <span class="comment">// Will not be emitted by the effect</span>
 }
+ }
 </code></pre></body></html>
 </div>
 <h4>Parameters</h4>
@@ -236,24 +235,24 @@ discarded:</p>
 </div>
 <div role="article" class="function" id="effect.catchtoeffect()">
     <h3>
-        <code>catch​ToEffect()</code>
+        <code><a href="#effect.catchtoeffect()">catch​ToEffect()</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">catchToEffect</span>() -&gt; <span class="type">Effect</span>&lt;<span class="type">Result</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;, <span class="type">Never</span>&gt; </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">catchToEffect</span>() -&gt; <span class="type">Effect</span>&lt;<span class="type">Result</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;, <span class="type">Never</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
-    <p>Turns any producer into an <code>Effect</code> that cannot fail by wrapping its output and failure in a
-result.</p>
+    <p>Turns any publisher into an <code>Effect</code> that cannot fail by wrapping its output and failure in
+a result.</p>
 
 </div>
 <div class="discussion">
     <p>This can be useful when you are working with a failing API but want to deliver its data to an
 action that handles both success and failure.</p>
 
-<html><body><pre class="highlight"><code><span class="keyword">case</span> .<span class="variable">buttonTapped</span>:
-  <span class="keyword">return</span> <span class="variable">fetchUser</span>(<span class="variable">id</span>: <span class="number literal">1</span>)
-    .<span class="variable">catchToEffect</span>()
-    .<span class="variable">map</span>(<span class="variable">ProfileAction</span>.<span class="variable">userResponse</span>)
+<html><body><pre class="highlight"><code> <span class="keyword">case</span> .<span class="variable">buttonTapped</span>:
+   <span class="keyword">return</span> <span class="variable">fetchUser</span>(<span class="variable">id</span>: <span class="number literal">1</span>)
+     .<span class="variable">catchToEffect</span>()
+     .<span class="variable">map</span>(<span class="variable">ProfileAction</span>.<span class="variable">userResponse</span>)
 </code></pre></body></html>
 </div>
   <h4>Returns</h4>
@@ -262,16 +261,16 @@ action that handles both success and failure.</p>
 </div>
 <div role="article" class="function" id="effect.fireandforget(outputtype:failuretype:)">
     <h3>
-        <code>fire​And​Forget(output​Type:​failure​Type:​)</code>
+        <code><a href="#effect.fireandforget(outputtype:failuretype:)">fire​And​Forget(output​Type:​failure​Type:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">fireAndForget</span>&lt;<span class="variable">NewValue</span>, <span class="variable">NewError</span>&gt;(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">fireAndForget</span>&lt;<span class="variable">NewValue</span>, <span class="variable">NewError</span>&gt;(
     <span class="variable">outputType</span>: <span class="type">NewValue</span>.<span class="type">Type</span> = <span class="variable">NewValue</span>.<span class="keyword">self</span>,
     <span class="variable">failureType</span>: <span class="type">NewError</span>.<span class="type">Type</span> = <span class="variable">NewError</span>.<span class="keyword">self</span>
-  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">NewValue</span>, <span class="type">NewError</span>&gt; </code></pre>
+  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">NewValue</span>, <span class="type">NewError</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
-    <p>Turns any publisher into an <code>Effect</code> for any output and failure type by ignoring all output
+    <p>Turns any <code>SignalProducer</code> into an <code>Effect</code> for any output and failure type by ignoring all output
 and any failure.</p>
 
 </div>
@@ -279,9 +278,9 @@ and any failure.</p>
     <p>This is useful for times you want to fire off an effect but don't want to feed any data back
 into the system. It can automatically promote an effect to your reducer's domain.</p>
 
-<html><body><pre class="highlight"><code><span class="keyword">case</span> .<span class="variable">buttonTapped</span>:
-  <span class="keyword">return</span> <span class="variable">analyticsClient</span>.<span class="variable">track</span>(<span class="string literal">"Button Tapped"</span>)
-    .<span class="variable">fireAndForget</span>()
+<html><body><pre class="highlight"><code> <span class="keyword">case</span> .<span class="variable">buttonTapped</span>:
+   <span class="keyword">return</span> <span class="variable">analyticsClient</span>.<span class="variable">track</span>(<span class="string literal">"Button Tapped"</span>)
+     .<span class="variable">fireAndForget</span>()
 </code></pre></body></html>
 </div>
 <h4>Parameters</h4>
@@ -315,15 +314,15 @@ into the system. It can automatically promote an effect to your reducer's domain
 </div>
 <div role="article" class="function" id="effect.assign(to:on:)">
     <h3>
-        <code>assign(to:​on:​)</code>
+        <code><a href="#effect.assign(to:on:)">assign(to:​on:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">discardableResult</span>
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">discardableResult</span>
   <span class="keyword">public</span> <span class="keyword">func</span> <span class="function">assign</span>&lt;<span class="variable">Root</span>&gt;(<span class="variable">to</span> <span class="variable">keyPath</span>: <span class="type">ReferenceWritableKeyPath</span>&lt;<span class="type">Root</span>, <span class="keyword">Self</span>.<span class="type">Value</span>&gt;, <span class="variable">on</span> <span class="variable">object</span>: <span class="type">Root</span>)
-    -&gt; <span class="type">Disposable</span></code></pre>
+    -&gt; <span class="type">Disposable</span></body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
-    <p>Assigns each element from an Effect to a property on an object.</p>
+    <p>Assigns each element from an <code>Effect</code> to a property on an object.</p>
 
 </div>
 <h4>Parameters</h4>
@@ -355,12 +354,259 @@ into the system. It can automatically promote an effect to your reducer's domain
   <p>Disposable instance</p>
 
 </div>
-<div role="article" class="function" id="effect.cancellable(id:cancelinflight:)">
+<div role="article" class="function" id="effect.timer(id:every:tolerance:on:)">
     <h3>
-        <code>cancellable(id:​cancel​InFlight:​)</code>
+        <code><a href="#effect.timer(id:every:tolerance:on:)">timer(id:​every:​tolerance:​on:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">cancellable</span>(<span class="variable">id</span>: <span class="type">AnyHashable</span>, <span class="variable">cancelInFlight</span>: <span class="type">Bool</span> = <span class="keyword">false</span>) -&gt; <span class="type">Effect</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">timer</span>(
+    <span class="variable">id</span>: <span class="type">AnyHashable</span>,
+    <span class="variable">every</span> <span class="variable">interval</span>: <span class="type">DispatchTimeInterval</span>,
+    <span class="variable">tolerance</span>: <span class="type">DispatchTimeInterval</span>? = <span class="keyword">nil</span>,
+    <span class="variable">on</span> <span class="variable">scheduler</span>: <span class="type">DateScheduler</span>
+  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns an effect that repeatedly emits the current time of the given scheduler on the given
+interval.</p>
+
+</div>
+<div class="discussion">
+    <p>This is basically a wrapper around the ReactiveSwift <code>SignalProducer.timer</code> function
+and which adds the the ability to be cancelled via the <code>id</code>.</p>
+
+<p>To start and stop a timer in your feature you can create the timer effect from an action
+and then use the <code>Effect/cancel(id:)</code> effect to stop the timer:</p>
+
+<html><body><pre class="highlight"><code> <span class="keyword">struct</span> <span class="type">AppState</span> {
+   <span class="keyword">var</span> <span class="variable">count</span> = <span class="number literal">0</span>
+ }
+
+ <span class="keyword">enum</span> <span class="type">AppAction</span> {
+   <span class="keyword">case</span> <span class="variable">startButtonTapped</span>, <span class="variable">stopButtonTapped</span>, <span class="variable">timerTicked</span>
+ }
+
+ <span class="keyword">struct</span> <span class="type">AppEnvironment</span> {
+   <span class="keyword">var</span> <span class="variable">mainQueue</span>: <span class="type">AnySchedulerOf</span>&lt;<span class="type">DispatchQueue</span>&gt;
+ }
+
+ <span class="keyword">let</span> <span class="variable">appReducer</span> = <span class="variable">Reducer</span>&lt;<span class="type">AppState</span>, <span class="type">AppAction</span>, <span class="type">AppEnvironment</span>&gt; { <span class="variable">state</span>, <span class="variable">action</span>, <span class="variable">env</span> <span class="keyword">in</span>
+   <span class="keyword">struct</span> <span class="type">TimerId</span>: <span class="type">Hashable</span> {}
+
+   <span class="keyword">switch</span> <span class="variable">action</span> {
+   <span class="keyword">case</span> .<span class="variable">startButtonTapped</span>:
+     <span class="keyword">return</span> <span class="variable">Effect</span>.<span class="variable">timer</span>(<span class="variable">id</span>: <span class="type">TimerId</span>(), <span class="variable">every</span>: <span class="number literal">1</span>, <span class="variable">on</span>: <span class="type">env</span>.<span class="variable">mainQueue</span>)
+       .<span class="variable">map</span> { <span class="keyword">_</span> <span class="keyword">in</span> .<span class="variable">timerTicked</span> }
+
+   <span class="keyword">case</span> .<span class="variable">stopButtonTapped</span>:
+     <span class="keyword">return</span> .<span class="variable">cancel</span>(<span class="variable">id</span>: <span class="type">TimerId</span>())
+
+   <span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">timerTicked</span>:
+     <span class="type">state</span>.<span class="variable">count</span> += <span class="number literal">1</span>
+     <span class="keyword">return</span> .<span class="variable">none</span>
+ }
+</code></pre></body></html>
+<p>Then to test the timer in this feature you can use a test scheduler to advance time:</p>
+
+<html><body><pre class="highlight"><code> <span class="keyword">func</span> <span class="function">testTimer</span>() {
+   <span class="keyword">let</span> <span class="variable">scheduler</span> = <span class="variable">TestScheduler</span>()
+
+   <span class="keyword">let</span> <span class="variable">store</span> = <span class="variable">TestStore</span>(
+     <span class="variable">initialState</span>: .<span class="variable">init</span>(),
+     <span class="variable">reducer</span>: <span class="type">appReducer</span>,
+ <span class="variable">environment</span>: .<span class="variable">init</span>(
+       <span class="variable">mainQueue</span>: <span class="type">scheduler</span>
+     )
+   )
+
+   <span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">startButtonTapped</span>)
+
+   <span class="variable">scheduler</span>.<span class="variable">advance</span>(<span class="variable">by</span>: .<span class="variable">seconds</span>(<span class="number literal">1</span>))
+   <span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">1</span> }
+
+   <span class="variable">scheduler</span>.<span class="variable">advance</span>(<span class="variable">by</span>: .<span class="variable">seconds</span>(<span class="number literal">5</span>))
+   <span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">2</span> }
+   <span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">3</span> }
+   <span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">4</span> }
+   <span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">5</span> }
+   <span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">6</span> }
+
+   <span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">stopButtonTapped</span>)
+ }
+</code></pre></body></html>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>interval</th>
+    <td><code class="type">Dispatch​Time​Interval</code></td>
+    <td><p>The time interval on which to publish events. For example, a value of <code>0.5</code> publishes an event approximately every half-second.</p>
+</td>
+</tr>
+<tr>
+    <th>scheduler</th>
+    <td><code class="type">Date​Scheduler</code></td>
+    <td><p>The scheduler on which the timer runs.</p>
+</td>
+</tr>
+<tr>
+    <th>tolerance</th>
+    <td><code class="type">Dispatch​Time​Interval?</code></td>
+    <td><p>The allowed timing variance when emitting events. Defaults to <code>nil</code>, which allows any variance.</p>
+</td>
+</tr>
+<tr>
+    <th>options</th>
+    <td></td>
+    <td><p>Scheduler options passed to the timer. Defaults to <code>nil</code>.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="effect.throttle(id:for:scheduler:latest:)">
+    <h3>
+        <code><a href="#effect.throttle(id:for:scheduler:latest:)">throttle(id:​for:​scheduler:​latest:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">throttle</span>(
+    <span class="variable">id</span>: <span class="type">AnyHashable</span>,
+    <span class="variable">for</span> <span class="variable">interval</span>: <span class="type">TimeInterval</span>,
+    <span class="variable">scheduler</span>: <span class="type">DateScheduler</span>,
+    <span class="variable">latest</span>: <span class="type">Bool</span>
+  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Throttles an effect so that it only publishes one output per given interval.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">Any​Hashable</code></td>
+    <td><p>The effect's identifier.</p>
+</td>
+</tr>
+<tr>
+    <th>for</th>
+    <td><code class="type">Time​Interval</code></td>
+    <td><p>The interval at which to find and emit the most recent element, expressed in the time system of the scheduler.</p>
+</td>
+</tr>
+<tr>
+    <th>scheduler</th>
+    <td><code class="type">Date​Scheduler</code></td>
+    <td><p>The scheduler you want to deliver the throttled output to.</p>
+</td>
+</tr>
+<tr>
+    <th>latest</th>
+    <td><code class="type">Bool</code></td>
+    <td><p>A boolean value that indicates whether to publish the most recent element. If <code>false</code>, the producer emits the first element received during the interval.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>An effect that emits either the most-recent or first element received during the specified interval.</p>
+
+</div>
+<div role="article" class="function" id="effect.debounce(id:for:scheduler:)">
+    <h3>
+        <code><a href="#effect.debounce(id:for:scheduler:)">debounce(id:​for:​scheduler:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">debounce</span>(
+    <span class="variable">id</span>: <span class="type">AnyHashable</span>,
+    <span class="variable">for</span> <span class="variable">interval</span>: <span class="type">TimeInterval</span>,
+    <span class="variable">scheduler</span>: <span class="type">DateScheduler</span>
+  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Turns an effect into one that can be debounced.</p>
+
+</div>
+<div class="discussion">
+    <p>To turn an effect into a debounce-able one you must provide an identifier, which is used to
+determine which in-flight effect should be canceled in order to start a new effect. Any
+hashable value can be used for the identifier, such as a string, but you can add a bit of
+protection against typos by defining a new type that conforms to <code>Hashable</code>, such as an empty
+struct:</p>
+
+<html><body><pre class="highlight"><code> <span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">textChanged</span>(<span class="variable">text</span>):
+   <span class="keyword">struct</span> <span class="type">SearchId</span>: <span class="type">Hashable</span> {}
+
+   <span class="keyword">return</span> <span class="variable">environment</span>.<span class="variable">search</span>(<span class="variable">text</span>)
+     .<span class="variable">map</span>(<span class="variable">Action</span>.<span class="variable">searchResponse</span>)
+     .<span class="variable">debounce</span>(<span class="variable">id</span>: <span class="type">SearchId</span>(), <span class="variable">for</span>: <span class="number literal">0.5</span>, <span class="variable">scheduler</span>: <span class="type">environment</span>.<span class="variable">mainQueue</span>)
+</code></pre></body></html>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">Any​Hashable</code></td>
+    <td><p>The effect's identifier.</p>
+</td>
+</tr>
+<tr>
+    <th>for</th>
+    <td><code class="type">Time​Interval</code></td>
+    <td><p>The duration you want to debounce for.</p>
+</td>
+</tr>
+<tr>
+    <th>scheduler</th>
+    <td><code class="type">Date​Scheduler</code></td>
+    <td><p>The scheduler you want to deliver the debounced output to.</p>
+</td>
+</tr>
+<tr>
+    <th>options</th>
+    <td></td>
+    <td><p>Scheduler options that customize the effect's delivery of elements.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>An effect that publishes events only after a specified time elapses.</p>
+
+</div>
+<div role="article" class="function" id="effect.cancellable(id:cancelinflight:)">
+    <h3>
+        <code><a href="#effect.cancellable(id:cancelinflight:)">cancellable(id:​cancel​InFlight:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">cancellable</span>(<span class="variable">id</span>: <span class="type">AnyHashable</span>, <span class="variable">cancelInFlight</span>: <span class="type">Bool</span> = <span class="keyword">false</span>) -&gt; <span class="type">Effect</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Turns an effect into one that is capable of being canceled.</p>
@@ -368,7 +614,7 @@ into the system. It can automatically promote an effect to your reducer's domain
 </div>
 <div class="discussion">
     <p>To turn an effect into a cancellable one you must provide an identifier, which is used in
-<code>Effect.cancel(id:)</code> to identify which in-flight effect should be canceled. Any hashable
+<code>Effect/cancel(id:)</code> to identify which in-flight effect should be canceled. Any hashable
 value can be used for the identifier, such as a string, but you can add a bit of protection
 against typos by defining a new type that conforms to <code>Hashable</code>, such as an empty struct:</p>
 
@@ -416,10 +662,10 @@ against typos by defining a new type that conforms to <code>Hashable</code>, suc
 </div>
 <div role="article" class="function" id="effect.cancel(id:)">
     <h3>
-        <code>cancel(id:​)</code>
+        <code><a href="#effect.cancel(id:)">cancel(id:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">cancel</span>(<span class="variable">id</span>: <span class="type">AnyHashable</span>) -&gt; <span class="type">Effect</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">cancel</span>(<span class="variable">id</span>: <span class="type">AnyHashable</span>) -&gt; <span class="type">Effect</span>  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>An effect that will cancel any currently in-flight effect with the given identifier.</p>
@@ -448,154 +694,25 @@ against typos by defining a new type that conforms to <code>Hashable</code>, suc
   <p>A new effect that will cancel any currently in-flight effect with the given identifier.</p>
 
 </div>
-<div role="article" class="function" id="effect.timer(id:every:tolerance:on:)">
+<div role="article" class="function" id="effect.deferred(for:scheduler:)">
     <h3>
-        <code>timer(id:​every:​tolerance:​on:​)</code>
+        <code><a href="#effect.deferred(for:scheduler:)">deferred(for:​scheduler:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">timer</span>(
-    <span class="variable">id</span>: <span class="type">AnyHashable</span>,
-    <span class="variable">every</span> <span class="variable">interval</span>: <span class="type">DispatchTimeInterval</span>,
-    <span class="variable">tolerance</span>: <span class="type">DispatchTimeInterval</span>? = <span class="keyword">nil</span>,
-    <span class="variable">on</span> <span class="variable">scheduler</span>: <span class="type">DateScheduler</span>
-  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt; </code></pre>
-</div>
-<div class="summary" role="doc-abstract">
-    <p>Returns an effect that repeatedly emits the current time of the given scheduler on the given
-interval.</p>
-
-</div>
-<div class="discussion">
-    <p>This is basically a wrapper around the ReactiveSwift <code>SignalProducer.timer</code> function
-and which adds the the ability to be cancelled via the <code>id</code>.</p>
-
-<p>To start and stop a timer in your feature you can create the timer effect from an action
-and then use the <code>.cancel(id:)</code> effect to stop the timer:</p>
-
-<html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">AppState</span> {
-  <span class="keyword">var</span> <span class="variable">count</span> = <span class="number literal">0</span>
-}
-
-<span class="keyword">enum</span> <span class="type">AppAction</span> {
-  <span class="keyword">case</span> <span class="variable">startButtonTapped</span>, <span class="variable">stopButtonTapped</span>, <span class="variable">timerTicked</span>
-}
-
-<span class="keyword">struct</span> <span class="type">AppEnvironment</span> {
-  <span class="keyword">var</span> <span class="variable">mainQueue</span>: <span class="type">AnySchedulerOf</span>&lt;<span class="type">DispatchQueue</span>&gt;
-}
-
-<span class="keyword">let</span> <span class="variable">appReducer</span> = <span class="variable">Reducer</span>&lt;<span class="type">AppState</span>, <span class="type">AppAction</span>, <span class="type">AppEnvironment</span>&gt; { <span class="variable">state</span>, <span class="variable">action</span>, <span class="variable">env</span> <span class="keyword">in</span>
-  <span class="keyword">struct</span> <span class="type">TimerId</span>: <span class="type">Hashable</span> {}
-
-  <span class="keyword">switch</span> <span class="variable">action</span> {
-  <span class="keyword">case</span> .<span class="variable">startButtonTapped</span>:
-    <span class="keyword">return</span> <span class="variable">Effect</span>.<span class="variable">timer</span>(<span class="variable">id</span>: <span class="type">TimerId</span>(), <span class="variable">every</span>: <span class="number literal">1</span>, <span class="variable">on</span>: <span class="type">env</span>.<span class="variable">mainQueue</span>)
-      .<span class="variable">map</span> { <span class="keyword">_</span> <span class="keyword">in</span> .<span class="variable">timerTicked</span> }
-
-  <span class="keyword">case</span> .<span class="variable">stopButtonTapped</span>:
-    <span class="keyword">return</span> .<span class="variable">cancel</span>(<span class="variable">id</span>: <span class="type">TimerId</span>())
-
-  <span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">timerTicked</span>:
-    <span class="type">state</span>.<span class="variable">count</span> += <span class="number literal">1</span>
-    <span class="keyword">return</span> .<span class="variable">none</span>
-}
-</code></pre></body></html>
-<p>Then to test the timer in this feature you can use a test scheduler to advance time:</p>
-
-<p>func testTimer() {
-let scheduler = TestScheduler()</p>
-
-<html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">store</span> = <span class="variable">TestStore</span>(
-  <span class="variable">initialState</span>: .<span class="variable">init</span>(),
-  <span class="variable">reducer</span>: <span class="type">appReducer</span>,
-  <span class="variable">envirnoment</span>: .<span class="variable">init</span>(
-    <span class="variable">mainQueue</span>: <span class="type">scheduler</span>
-  )
-)
-
-<span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">startButtonTapped</span>)
-
-<span class="variable">scheduler</span>.<span class="variable">advance</span>(<span class="variable">by</span>: .<span class="variable">seconds</span>(<span class="number literal">1</span>))
-<span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">1</span> }
-
-<span class="variable">scheduler</span>.<span class="variable">advance</span>(<span class="variable">by</span>: .<span class="variable">seconds</span>(<span class="number literal">5</span>))
-<span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">2</span> }
-<span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">3</span> }
-<span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">4</span> }
-<span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">5</span> }
-<span class="variable">store</span>.<span class="variable">receive</span>(.<span class="variable">timerTicked</span>) { <span class="variable">$0</span>.<span class="variable">count</span> = <span class="number literal">6</span> }
-
-<span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">stopButtonTapped</span>)
-</code></pre></body></html>
-<p>}</p>
-
-</div>
-<h4>Parameters</h4>
-
-<table class="parameters">
-  <thead hidden>
-  <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <th>interval</th>
-    <td><code class="type">Dispatch​Time​Interval</code></td>
-    <td><p>The time interval on which to publish events. For example, a value of <code>0.5</code> publishes an event approximately every half-second.</p>
-</td>
-</tr>
-<tr>
-    <th>scheduler</th>
-    <td><code class="type">Date​Scheduler</code></td>
-    <td><p>The scheduler on which the timer runs.</p>
-</td>
-</tr>
-<tr>
-    <th>tolerance</th>
-    <td><code class="type">Dispatch​Time​Interval?</code></td>
-    <td><p>The allowed timing variance when emitting events. Defaults to <code>nil</code>, which allows any variance.</p>
-</td>
-</tr>
-<tr>
-    <th>options</th>
-    <td></td>
-    <td><p>Scheduler options passed to the timer. Defaults to <code>nil</code>.</p>
-</td>
-</tr>
-  </tbody>
-</table>
-</div>
-<div role="article" class="function" id="effect.debounce(id:interval:scheduler:)">
-    <h3>
-        <code>debounce(id:​interval:​scheduler:​)</code>
-    </h3>
-    <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">debounce</span>(
-    <span class="variable">id</span>: <span class="type">AnyHashable</span>,
-    <span class="variable">interval</span>: <span class="type">TimeInterval</span>,
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">deferred</span>(
+    <span class="variable">for</span> <span class="variable">dueTime</span>: <span class="type">TimeInterval</span>,
     <span class="variable">scheduler</span>: <span class="type">DateScheduler</span>
-  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt; </code></pre>
+  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">Value</span>, <span class="type">Error</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
-    <p>Turns an effect into one that can be debounced.</p>
+    <p>Returns an effect that will be executed after given <code>dueTime</code>.</p>
 
 </div>
 <div class="discussion">
-    <p>To turn an effect into a debounce-able one you must provide an identifier, which is used to
-determine which in-flight effect should be canceled in order to start a new effect. Any
-hashable value can be used for the identifier, such as a string, but you can add a bit of
-protection against typos by defining a new type that conforms to <code>Hashable</code>, such as an empty
-struct:</p>
-
-<html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">textChanged</span>(<span class="variable">text</span>):
-  <span class="keyword">struct</span> <span class="type">SearchId</span>: <span class="type">Hashable</span> {}
-
+    <html><body><pre class="highlight"><code><span class="keyword">case</span> <span class="keyword">let</span> .<span class="variable">textChanged</span>(<span class="variable">text</span>):
   <span class="keyword">return</span> <span class="variable">environment</span>.<span class="variable">search</span>(<span class="variable">text</span>)
     .<span class="variable">map</span>(<span class="variable">Action</span>.<span class="variable">searchResponse</span>)
-    .<span class="variable">debounce</span>(<span class="variable">id</span>: <span class="type">SearchId</span>(), <span class="variable">for</span>: <span class="number literal">0.5</span>, <span class="variable">scheduler</span>: <span class="type">environment</span>.<span class="variable">mainQueue</span>)
+    .<span class="variable">deferred</span>(<span class="variable">for</span>: <span class="number literal">0.5</span>, <span class="variable">scheduler</span>: <span class="type">environment</span>.<span class="variable">mainQueue</span>)
 </code></pre></body></html>
 </div>
 <h4>Parameters</h4>
@@ -610,21 +727,21 @@ struct:</p>
   </thead>
   <tbody>
     <tr>
-    <th>id</th>
-    <td><code class="type">Any​Hashable</code></td>
-    <td><p>The effect's identifier.</p>
+    <th>upstream</th>
+    <td></td>
+    <td><p>the effect you want to defer.</p>
 </td>
 </tr>
 <tr>
     <th>due​Time</th>
-    <td></td>
-    <td><p>The duration you want to debounce for.</p>
+    <td><code class="type">Time​Interval</code></td>
+    <td><p>The duration you want to defer for.</p>
 </td>
 </tr>
 <tr>
     <th>scheduler</th>
     <td><code class="type">Date​Scheduler</code></td>
-    <td><p>The scheduler you want to deliver the debounced output to.</p>
+    <td><p>The scheduler you want to deliver the defer output to.</p>
 </td>
 </tr>
 <tr>
@@ -636,7 +753,7 @@ struct:</p>
   </tbody>
 </table>
   <h4>Returns</h4>
-  <p>An effect that publishes events only after a specified time elapses.</p>
+  <p>An effect that will be executed after <code>dueTime</code></p>
 
 </div>
     </section>
@@ -645,7 +762,7 @@ struct:</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2021-04-27T09:43:54+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
+    Generated on <time datetime="2021-07-20T18:24:59+0000">July 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>

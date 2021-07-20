@@ -14,7 +14,6 @@
             </strong>
             <span>Documentation</span>
         </a>
-        <sup>Beta</sup>
     </header>
 
     <!--
@@ -38,7 +37,7 @@
 </h1>
 
 <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">final</span> <span class="keyword">class</span> <span class="type">Store</span>&lt;<span class="variable">State</span>, <span class="variable">Action</span>&gt; </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="attribute">final</span> <span class="keyword">class</span> <span class="type">Store</span>&lt;<span class="variable">State</span>, <span class="variable">Action</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A store represents the runtime that powers the application. It is the object that you will pass
@@ -47,7 +46,113 @@ around to views that need to interact with the application.</p>
 </div>
 <div class="discussion">
     <p>You will typically construct a single one of these at the root of your application, and then use
-the <code>scope</code> method to derive more focused stores that can be passed to subviews.</p>
+the <code>scope(state:action:)-9iai9</code> method to derive more focused stores that can be passed to
+subviews:</p>
+
+<html><body><pre class="highlight"><code><span class="attribute">@</span><span class="attribute">main</span>
+<span class="keyword">struct</span> <span class="type">MyApp</span>: <span class="type">App</span> {
+  <span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">Scene</span> {
+    <span class="variable">WindowGroup</span> {
+      <span class="variable">RootView</span>(
+        <span class="variable">store</span>: <span class="type">Store</span>(
+          <span class="variable">initialState</span>: <span class="type">AppState</span>(),
+          <span class="variable">reducer</span>: <span class="type">appReducer</span>,
+          <span class="variable">environment</span>: <span class="type">AppEnvironment</span>(
+            ...
+          )
+        )
+      )
+    }
+  }
+}
+</code></pre></body></html>
+<h3>Scoping</h3>
+
+<p>The most important operation defined on <code>Store</code> is the <code>scope(state:action:)-9iai9</code> method,
+which allows you to transform a store into one that deals with local state and actions. This is
+necessary for passing stores to subviews that only care about a small portion of the entire
+application's domain.</p>
+
+<p>For example, if an application has a tab view at its root with tabs for activity, search, and
+profile, then we can model the domain like this:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">AppState</span> {
+  <span class="keyword">var</span> <span class="variable">activity</span>: <span class="type">ActivityState</span>
+  <span class="keyword">var</span> <span class="variable">profile</span>: <span class="type">ProfileState</span>
+  <span class="keyword">var</span> <span class="variable">search</span>: <span class="type">SearchState</span>
+}
+
+<span class="keyword">enum</span> <span class="type">AppAction</span> {
+  <span class="keyword">case</span> <span class="variable">activity</span>(<span class="type">ActivityState</span>)
+  <span class="keyword">case</span> <span class="variable">profile</span>(<span class="type">ProfileState</span>)
+  <span class="keyword">case</span> <span class="variable">search</span>(<span class="type">SearchState</span>)
+}
+</code></pre></body></html>
+<p>We can construct a view for each of these domains by applying <code>scope(state:action:)-9iai9</code>
+to a store that holds onto the full app domain in order to transform it into a store for each
+sub-domain:</p>
+
+<html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">AppView</span>: <span class="type">View</span> {
+  <span class="keyword">let</span> <span class="variable">store</span>: <span class="type">Store</span>&lt;<span class="type">AppState</span>, <span class="type">AppAction</span>&gt;
+
+  <span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span> {
+    <span class="variable">TabView</span> {
+      <span class="variable">ActivityView</span>(<span class="variable">store</span>: <span class="keyword">self</span>.<span class="variable">store</span>.<span class="variable">scope</span>(<span class="variable">state</span>: \.<span class="variable">activity</span>, <span class="variable">action</span>: <span class="type">AppAction</span>.<span class="variable">activity</span>))
+        .<span class="variable">tabItem</span> { <span class="variable">Text</span>(<span class="string literal">"</span><span class="string literal">Activity</span><span class="string literal">"</span>) }
+
+      <span class="variable">SearchView</span>(<span class="variable">store</span>: <span class="keyword">self</span>.<span class="variable">store</span>.<span class="variable">scope</span>(<span class="variable">state</span>: \.<span class="variable">search</span>, <span class="variable">action</span>: <span class="type">AppAction</span>.<span class="variable">search</span>))
+        .<span class="variable">tabItem</span> { <span class="variable">Text</span>(<span class="string literal">"</span><span class="string literal">Search</span><span class="string literal">"</span>) }
+
+      <span class="variable">ProfileView</span>(<span class="variable">store</span>: <span class="keyword">self</span>.<span class="variable">store</span>.<span class="variable">scope</span>(<span class="variable">state</span>: \.<span class="variable">profile</span>, <span class="variable">action</span>: <span class="type">AppAction</span>.<span class="variable">profile</span>))
+        .<span class="variable">tabItem</span> { <span class="variable">Text</span>(<span class="string literal">"</span><span class="string literal">Profile</span><span class="string literal">"</span>) }
+    }
+  }
+</code></pre></body></html>
+<h3>Thread safety</h3>
+
+<p>The <code>Store</code> class is not thread-safe, and so all interactions with an instance of <code>Store</code>
+(including all of its scopes and derived <code>ViewStore</code>s) must be done on the same thread.
+Further, if the store is powering a SwiftUI or UIKit view, as is customary, then all
+interactions must be done on the <em>main</em> thread.</p>
+
+<p>The reason stores are not thread-safe is due to the fact that when an action is sent to a store,
+a reducer is run on the current state, and this process cannot be done from multiple threads.
+It is possible to make this process thread-safe by introducing locks or queues, but this
+introduces new complications:</p>
+
+<ul>
+<li>
+<p>If done simply with <code>DispatchQueue.main.async</code> you will incur a thread hop even when you are
+already on the main thread. This can lead to unexpected behavior in UIKit and SwiftUI, where
+sometimes you are required to do work synchronously, such as in animation blocks.</p>
+</li>
+<li>
+<p>It is possible to create a scheduler that performs its work immediately when on the main
+thread and otherwise uses <code>DispatchQueue.main.async</code> (e.g. see CombineScheduler's
+<a href="https://github.com/pointfreeco/combine-schedulers/blob/main/Sources/CombineSchedulers/UIScheduler.swift">UIScheduler</a>).
+This introduces a lot more complexity, and should probably not be adopted without having a very
+good reason.</p>
+</li>
+</ul>
+
+<p>This is why we require all actions be sent from the same thread. This requirement is in the same
+spirit of how <code>URLSession</code> and other Apple APIs are designed. Those APIs tend to deliver their
+outputs on whatever thread is most convenient for them, and then it is your responsibility to
+dispatch back to the main queue if that's what you need. The Composable Architecture makes you
+responsible for making sure to send actions on the main thread. If you are using an effect that
+may deliver its output on a non-main thread, you must explicitly perform <code>.receive(on:)</code> in
+order to force it back on the main thread.</p>
+
+<p>This approach makes the fewest number of assumptions about how effects are created and
+transformed, and prevents unnecessary thread hops and re-dispatching. It also provides some
+testing benefits. If your effects are not responsible for their own scheduling, then in tests
+all of the effects would run synchronously and immediately. You would not be able to test how
+multiple in-flight effects interleave with each other and affect the state of your application.
+However, by leaving scheduling out of the <code>Store</code> we get to test these aspects of our effects
+if we so desire, or we can ignore if we prefer. We have that flexibility.</p>
+
+<p>See also: <code>ViewStore</code> to understand how one observes changes to the state in a <code>Store</code> and
+sends user actions.</p>
 
 </div>
 
@@ -56,14 +161,14 @@ the <code>scope</code> method to derive more focused stores that can be passed t
 
         <div role="article" class="initializer" id="store.init(initialstate:reducer:environment:)">
     <h3>
-        <code>init(initial​State:​reducer:​environment:​)</code>
+        <code><a href="#store.init(initialstate:reducer:environment:)">init(initial​State:​reducer:​environment:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="attribute">convenience</span> <span class="keyword">init</span>&lt;<span class="variable">Environment</span>&gt;(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">init</span>&lt;<span class="variable">Environment</span>&gt;(
     <span class="variable">initialState</span>: <span class="type">State</span>,
-    <span class="variable">reducer</span>: <span class="type">Reducer</span>&lt;<span class="type">State</span>, <span class="type">Action</span>, <span class="type">Environment</span>&gt;,
+    <span class="variable">reducer</span>: <a href="/reactiveswift-composable-architecture/Reducer"><span class="type">Reducer</span></a>&lt;<span class="type">State</span>, <span class="type">Action</span>, <span class="type">Environment</span>&gt;,
     <span class="variable">environment</span>: <span class="type">Environment</span>
-  ) </code></pre>
+  )  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Initializes a store from an initial state, a reducer, and an environment.</p>
@@ -107,10 +212,10 @@ the <code>scope</code> method to derive more focused stores that can be passed t
 
         <div role="article" class="variable" id="store.stateless">
     <h3>
-        <code>stateless</code>
+        <code><a href="#store.stateless">stateless</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">stateless</span>: <span class="type">Store</span>&lt;<span class="type">Void</span>, <span class="type">Action</span>&gt; </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">stateless</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">Void</span>, <span class="type">Action</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Returns a &quot;stateless&quot; store by erasing state to <code>Void</code>.</p>
@@ -119,10 +224,10 @@ the <code>scope</code> method to derive more focused stores that can be passed t
 </div>
 <div role="article" class="variable" id="store.actionless">
     <h3>
-        <code>actionless</code>
+        <code><a href="#store.actionless">actionless</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">actionless</span>: <span class="type">Store</span>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt; </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">actionless</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Returns an &quot;actionless&quot; store by erasing action to <code>Never</code>.</p>
@@ -135,36 +240,38 @@ the <code>scope</code> method to derive more focused stores that can be passed t
 
         <div role="article" class="function" id="store.scope(state:)">
     <h3>
-        <code>scope(state:​)</code>
+        <code><a href="#store.scope(state:)">scope(state:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">renamed</span>: <span class="string literal">&quot;producerScope(state:)&quot;</span>)
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">_disfavoredOverload</span>
+  <span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">renamed</span>: <span class="string literal">"producerScope(state:)"</span>)
   <span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">LocalState</span>&gt;(
     <span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Effect</span>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;) -&gt; <span class="type">Effect</span>&lt;<span class="type">LocalState</span>, <span class="type">Never</span>&gt;
-  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">Store</span>&lt;<span class="type">LocalState</span>, <span class="type">Action</span>&gt;, <span class="type">Never</span>&gt; </code></pre>
+  ) -&gt; <span class="type">Effect</span>&lt;<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Action</span>&gt;, <span class="type">Never</span>&gt;  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="function" id="store.scope(state:action:)">
     <h3>
-        <code>scope(state:​action:​)</code>
+        <code><a href="#store.scope(state:action:)">scope(state:​action:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">renamed</span>: <span class="string literal">&quot;producerScope(state:action:)&quot;</span>)
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">_disfavoredOverload</span>
+  <span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">renamed</span>: <span class="string literal">"producerScope(state:action:)"</span>)
   <span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">LocalState</span>, <span class="variable">LocalAction</span>&gt;(
     <span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Effect</span>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;) -&gt; <span class="type">Effect</span>&lt;<span class="type">LocalState</span>, <span class="type">Never</span>&gt;,
     <span class="variable">action</span> <span class="variable">fromLocalAction</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">LocalAction</span>) -&gt; <span class="type">Action</span>
-  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">Store</span>&lt;<span class="type">LocalState</span>, <span class="type">LocalAction</span>&gt;, <span class="type">Never</span>&gt; </code></pre>
+  ) -&gt; <span class="type">Effect</span>&lt;<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">LocalAction</span>&gt;, <span class="type">Never</span>&gt;  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="function" id="store.scope(state:action:)">
     <h3>
-        <code>scope(state:​action:​)</code>
+        <code><a href="#store.scope(state:action:)">scope(state:​action:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">LocalState</span>, <span class="variable">LocalAction</span>&gt;(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">LocalState</span>, <span class="variable">LocalAction</span>&gt;(
     <span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">State</span>) -&gt; <span class="type">LocalState</span>,
     <span class="variable">action</span> <span class="variable">fromLocalAction</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">LocalAction</span>) -&gt; <span class="type">Action</span>
-  ) -&gt; <span class="type">Store</span>&lt;<span class="type">LocalState</span>, <span class="type">LocalAction</span>&gt; </code></pre>
+  ) -&gt; <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">LocalAction</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Scopes the store to one that exposes local state and actions.</p>
@@ -188,8 +295,8 @@ example:</p>
 <span class="comment">// Construct a login view by scoping the store to one that works with only login domain.</span>
 <span class="variable">LoginView</span>(
   <span class="variable">store</span>: <span class="type">store</span>.<span class="variable">scope</span>(
-    <span class="variable">state</span>: { <span class="variable">$0</span>.<span class="variable">login</span> },
-    <span class="variable">action</span>: { <span class="variable">AppAction</span>.<span class="variable">login</span>(<span class="variable">$0</span>) }
+    <span class="variable">state</span>: \.<span class="variable">login</span>,
+    <span class="variable">action</span>: <span class="type">AppAction</span>.<span class="variable">login</span>
   )
 )
 </code></pre></body></html>
@@ -289,13 +396,13 @@ transform view actions into feature actions.</p>
 <p>With these helpers defined, <code>LoginView</code> can now scope its store's feature domain into its view
 domain:</p>
 
-<html><body><pre class="highlight"><code><span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span> {
-  <span class="variable">WithViewStore</span>(
-    <span class="keyword">self</span>.<span class="variable">store</span>.<span class="variable">scope</span>(<span class="variable">state</span>: { <span class="variable">$0</span>.<span class="variable">view</span> }, <span class="variable">action</span>: { <span class="variable">$0</span>.<span class="variable">feature</span> })
-  ) { <span class="variable">viewStore</span> <span class="keyword">in</span>
-    ...
-  }
-}
+<html><body><pre class="highlight"><code> <span class="keyword">var</span> <span class="variable">body</span>: <span class="keyword">some</span> <span class="type">View</span> {
+   <span class="variable">WithViewStore</span>(
+     <span class="keyword">self</span>.<span class="variable">store</span>.<span class="variable">scope</span>(<span class="variable">state</span>: \.<span class="variable">view</span>, <span class="variable">action</span>: \.<span class="variable">feature</span>)
+   ) { <span class="variable">viewStore</span> <span class="keyword">in</span>
+     ...
+   }
+ }
 </code></pre></body></html>
 <p>This view store is now incapable of reading any state but view state (and will not recompute
 when non-view state changes), and is incapable of sending any actions but view actions.</p>
@@ -332,12 +439,12 @@ when non-view state changes), and is incapable of sending any actions but view a
 </div>
 <div role="article" class="function" id="store.scope(state:)">
     <h3>
-        <code>scope(state:​)</code>
+        <code><a href="#store.scope(state:)">scope(state:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">LocalState</span>&gt;(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">scope</span>&lt;<span class="variable">LocalState</span>&gt;(
     <span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">State</span>) -&gt; <span class="type">LocalState</span>
-  ) -&gt; <span class="type">Store</span>&lt;<span class="type">LocalState</span>, <span class="type">Action</span>&gt; </code></pre>
+  ) -&gt; <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Action</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Scopes the store to one that exposes local state.</p>
@@ -368,13 +475,13 @@ when non-view state changes), and is incapable of sending any actions but view a
 </div>
 <div role="article" class="function" id="store.producerscope(state:action:)">
     <h3>
-        <code>producer​Scope(state:​action:​)</code>
+        <code><a href="#store.producerscope(state:action:)">producer​Scope(state:​action:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">producerScope</span>&lt;<span class="variable">LocalState</span>, <span class="variable">LocalAction</span>&gt;(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">producerScope</span>&lt;<span class="variable">LocalState</span>, <span class="variable">LocalAction</span>&gt;(
     <span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Effect</span>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;) -&gt; <span class="type">Effect</span>&lt;<span class="type">LocalState</span>, <span class="type">Never</span>&gt;,
     <span class="variable">action</span> <span class="variable">fromLocalAction</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">LocalAction</span>) -&gt; <span class="type">Action</span>
-  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">Store</span>&lt;<span class="type">LocalState</span>, <span class="type">LocalAction</span>&gt;, <span class="type">Never</span>&gt; </code></pre>
+  ) -&gt; <span class="type">Effect</span>&lt;<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">LocalAction</span>&gt;, <span class="type">Never</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Scopes the store to a producer of stores of more local state and local actions.</p>
@@ -411,12 +518,12 @@ when non-view state changes), and is incapable of sending any actions but view a
 </div>
 <div role="article" class="function" id="store.producerscope(state:)">
     <h3>
-        <code>producer​Scope(state:​)</code>
+        <code><a href="#store.producerscope(state:)">producer​Scope(state:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">producerScope</span>&lt;<span class="variable">LocalState</span>&gt;(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">func</span> <span class="function">producerScope</span>&lt;<span class="variable">LocalState</span>&gt;(
     <span class="variable">state</span> <span class="variable">toLocalState</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Effect</span>&lt;<span class="type">State</span>, <span class="type">Never</span>&gt;) -&gt; <span class="type">Effect</span>&lt;<span class="type">LocalState</span>, <span class="type">Never</span>&gt;
-  ) -&gt; <span class="type">Effect</span>&lt;<span class="type">Store</span>&lt;<span class="type">LocalState</span>, <span class="type">Action</span>&gt;, <span class="type">Never</span>&gt; </code></pre>
+  ) -&gt; <span class="type">Effect</span>&lt;<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">LocalState</span>, <span class="type">Action</span>&gt;, <span class="type">Never</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Scopes the store to a producer of stores of more local state and local actions.</p>
@@ -447,14 +554,14 @@ when non-view state changes), and is incapable of sending any actions but view a
 </div>
 <div role="article" class="function" id="store.iflet(then:else:)">
     <h3>
-        <code>if​Let(then:​else:​)</code>
+        <code><a href="#store.iflet(then:else:)">if​Let(then:​else:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">discardableResult</span>
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">discardableResult</span>
   <span class="keyword">public</span> <span class="keyword">func</span> <span class="function">ifLet</span>&lt;<span class="variable">Wrapped</span>&gt;(
-    <span class="variable">then</span> <span class="variable">unwrap</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Store</span>&lt;<span class="type">Wrapped</span>, <span class="type">Action</span>&gt;) -&gt; <span class="type">Void</span>,
+    <span class="variable">then</span> <span class="variable">unwrap</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">Wrapped</span>, <span class="type">Action</span>&gt;) -&gt; <span class="type">Void</span>,
     <span class="variable">else</span>: <span class="attribute">@</span><span class="attribute">escaping</span> () -&gt; <span class="type">Void</span> = {}
-  ) -&gt; <span class="type">Disposable</span> <span class="keyword">where</span> <span class="type">State</span> == <span class="type">Wrapped</span>? </code></pre>
+  ) -&gt; <span class="type">Disposable</span> <span class="keyword">where</span> <span class="type">State</span> == <span class="type">Wrapped</span>?  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>Calls one of two closures depending on whether a store's optional state is <code>nil</code> or not, and
@@ -470,27 +577,27 @@ store of non-optional state that is passed to the first closure. If the store's 
 to navigate to can be held as an optional value in the parent, and when that value goes from
 <code>nil</code> to non-<code>nil</code>, or non-<code>nil</code> to <code>nil</code>, you can update the navigation stack accordingly:</p>
 
-<html><body><pre class="highlight"><code><span class="keyword">class</span> <span class="type">ParentViewController</span>: <span class="type">UIViewController</span> {
-  <span class="keyword">let</span> <span class="variable">store</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">ParentState</span>, <span class="type">ParentAction</span>&gt;
-  ...
-  <span class="keyword">func</span> <span class="function">viewDidLoad</span>() {
-    ...
-    <span class="keyword">self</span>.<span class="variable">store</span>
-      .<span class="variable">scope</span>(<span class="variable">state</span>: \.<span class="variable">optionalChild</span>, <span class="variable">action</span>: <span class="type">ParentAction</span>.<span class="variable">child</span>)
-      .<span class="variable">ifLet</span>(
-        <span class="variable">then</span>: { [<span class="variable">weak</span> <span class="keyword">self</span>] <span class="variable">childStore</span> <span class="keyword">in</span>
-          <span class="keyword">self</span>?.<span class="variable">navigationController</span>?.<span class="variable">pushViewController</span>(
-            <span class="variable">ChildViewController</span>(<span class="variable">store</span>: <span class="type">childStore</span>),
-            <span class="variable">animated</span>: <span class="keyword">true</span>
-          )
-        },
-        <span class="variable">else</span>: { [<span class="variable">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span>
-          <span class="keyword">guard</span> <span class="keyword">let</span> <span class="keyword">self</span> = <span class="keyword">self</span> <span class="keyword">else</span> { <span class="keyword">return</span> }
-          <span class="keyword">self</span>.<span class="variable">navigationController</span>?.<span class="variable">popToViewController</span>(<span class="keyword">self</span>, <span class="variable">animated</span>: <span class="keyword">true</span>)
-        }
-      )
-  }
-}
+<html><body><pre class="highlight"><code> <span class="keyword">class</span> <span class="type">ParentViewController</span>: <span class="type">UIViewController</span> {
+   <span class="keyword">let</span> <span class="variable">store</span>: <a href="/reactiveswift-composable-architecture/Store"><span class="type">Store</span></a>&lt;<span class="type">ParentState</span>, <span class="type">ParentAction</span>&gt;
+   ...
+   <span class="keyword">func</span> <span class="function">viewDidLoad</span>() {
+     ...
+     <span class="keyword">self</span>.<span class="variable">store</span>
+       .<span class="variable">scope</span>(<span class="variable">state</span>: \.<span class="variable">optionalChild</span>, <span class="variable">action</span>: <span class="type">ParentAction</span>.<span class="variable">child</span>)
+       .<span class="variable">ifLet</span>(
+         <span class="variable">then</span>: { [<span class="variable">weak</span> <span class="keyword">self</span>] <span class="variable">childStore</span> <span class="keyword">in</span>
+           <span class="keyword">self</span>?.<span class="variable">navigationController</span>?.<span class="variable">pushViewController</span>(
+             <span class="variable">ChildViewController</span>(<span class="variable">store</span>: <span class="type">childStore</span>),
+             <span class="variable">animated</span>: <span class="keyword">true</span>
+           )
+         },
+         <span class="variable">else</span>: { [<span class="variable">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span>
+           <span class="keyword">guard</span> <span class="keyword">let</span> <span class="keyword">self</span> = <span class="keyword">self</span> <span class="keyword">else</span> { <span class="keyword">return</span> }
+           <span class="keyword">self</span>.<span class="variable">navigationController</span>?.<span class="variable">popToViewController</span>(<span class="keyword">self</span>, <span class="variable">animated</span>: <span class="keyword">true</span>)
+         }
+       )
+   }
+ }
 </code></pre></body></html>
 </div>
 <h4>Parameters</h4>
@@ -531,7 +638,7 @@ to navigate to can be held as an optional value in the parent, and when that val
 
     <footer>
         <p>
-    Generated on <time datetime="2021-04-27T09:43:55+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
+    Generated on <time datetime="2021-07-20T18:24:59+0000">July 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>

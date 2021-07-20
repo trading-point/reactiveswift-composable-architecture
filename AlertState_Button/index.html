@@ -14,7 +14,6 @@
             </strong>
             <span>Documentation</span>
         </a>
-        <sup>Beta</sup>
     </header>
 
     <!--
@@ -38,7 +37,7 @@
 </h1>
 
 <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">Button</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">Button</span>  </body></html></code></pre>
 </div>
 <section id="relationships">
     <h2 hidden>Relationships</h2>
@@ -61,18 +60,18 @@ generic is the type of actions that can be sent from tapping on a button in the 
 
         <div role="article" class="variable" id="alertstate.button.action">
     <h3>
-        <code>action</code>
+        <code><a href="#alertstate.button.action">action</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">action</span>: <span class="type">Action</span>?</code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">action</span>: <span class="type">Action</span>? </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="variable" id="alertstate.button.type">
     <h3>
-        <code>type</code>
+        <code><a href="#alertstate.button.type">type</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">type</span>: <span class="type">`Type`</span></code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">type</span>: <span class="type">`Type`</span></body></html></code></pre>
 </div>
 </div>
     </section>
@@ -81,84 +80,84 @@ generic is the type of actions that can be sent from tapping on a button in the 
 
         <div role="article" class="function" id="alertstate.button.cancel(_:send:)">
     <h3>
-        <code>cancel(_:​send:​)</code>
+        <code><a href="#alertstate.button.cancel(_:send:)">cancel(_:​send:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">&quot;&apos;label&apos; should be &apos;TextState&apos;&quot;</span>)
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">"'label' should be 'TextState'"</span>)
     <span class="attribute">@</span><span class="attribute">_disfavoredOverload</span>
     <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">cancel</span>(
       <span class="keyword">_</span> <span class="variable">label</span>: <span class="type">LocalizedStringKey</span>,
       <span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>
-    ) -&gt; <span class="keyword">Self</span> </code></pre>
+    ) -&gt; <span class="keyword">Self</span>  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="function" id="alertstate.button.`default`(_:send:)">
     <h3>
-        <code>`default`(_:​send:​)</code>
+        <code><a href="#alertstate.button.`default`(_:send:)">`default`(_:​send:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">&quot;&apos;label&apos; should be &apos;TextState&apos;&quot;</span>)
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">"'label' should be 'TextState'"</span>)
     <span class="attribute">@</span><span class="attribute">_disfavoredOverload</span>
     <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">`default`</span>(
       <span class="keyword">_</span> <span class="variable">label</span>: <span class="type">LocalizedStringKey</span>,
       <span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>
-    ) -&gt; <span class="keyword">Self</span> </code></pre>
+    ) -&gt; <span class="keyword">Self</span>  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="function" id="alertstate.button.destructive(_:send:)">
     <h3>
-        <code>destructive(_:​send:​)</code>
+        <code><a href="#alertstate.button.destructive(_:send:)">destructive(_:​send:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">&quot;&apos;label&apos; should be &apos;TextState&apos;&quot;</span>)
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">"'label' should be 'TextState'"</span>)
     <span class="attribute">@</span><span class="attribute">_disfavoredOverload</span>
     <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">destructive</span>(
       <span class="keyword">_</span> <span class="variable">label</span>: <span class="type">LocalizedStringKey</span>,
       <span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>
-    ) -&gt; <span class="keyword">Self</span> </code></pre>
+    ) -&gt; <span class="keyword">Self</span>  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="function" id="alertstate.button.cancel(_:send:)">
     <h3>
-        <code>cancel(_:​send:​)</code>
+        <code><a href="#alertstate.button.cancel(_:send:)">cancel(_:​send:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">cancel</span>(
-        <span class="keyword">_</span> <span class="variable">label</span>: <span class="type">TextState</span>,
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">cancel</span>(
+        <span class="keyword">_</span> <span class="variable">label</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>,
         <span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>
-      ) -&gt; <span class="keyword">Self</span> </code></pre>
+      ) -&gt; <span class="keyword">Self</span>  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="function" id="alertstate.button.cancel(send:)">
     <h3>
-        <code>cancel(send:​)</code>
+        <code><a href="#alertstate.button.cancel(send:)">cancel(send:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">cancel</span>(
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">cancel</span>(
         <span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>
-      ) -&gt; <span class="keyword">Self</span> </code></pre>
+      ) -&gt; <span class="keyword">Self</span>  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="function" id="alertstate.button.`default`(_:send:)">
     <h3>
-        <code>`default`(_:​send:​)</code>
+        <code><a href="#alertstate.button.`default`(_:send:)">`default`(_:​send:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">`default`</span>(
-        <span class="keyword">_</span> <span class="variable">label</span>: <span class="type">TextState</span>,
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">`default`</span>(
+        <span class="keyword">_</span> <span class="variable">label</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>,
         <span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>
-      ) -&gt; <span class="keyword">Self</span> </code></pre>
+      ) -&gt; <span class="keyword">Self</span>  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="function" id="alertstate.button.destructive(_:send:)">
     <h3>
-        <code>destructive(_:​send:​)</code>
+        <code><a href="#alertstate.button.destructive(_:send:)">destructive(_:​send:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">destructive</span>(
-        <span class="keyword">_</span> <span class="variable">label</span>: <span class="type">TextState</span>,
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">func</span> <span class="function">destructive</span>(
+        <span class="keyword">_</span> <span class="variable">label</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>,
         <span class="variable">send</span> <span class="variable">action</span>: <span class="type">Action</span>? = <span class="keyword">nil</span>
-      ) -&gt; <span class="keyword">Self</span> </code></pre>
+      ) -&gt; <span class="keyword">Self</span>  </body></html></code></pre>
 </div>
 </div>
     </section>
@@ -170,7 +169,7 @@ generic is the type of actions that can be sent from tapping on a button in the 
 
     <footer>
         <p>
-    Generated on <time datetime="2021-04-27T09:43:55+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
+    Generated on <time datetime="2021-07-20T18:24:59+0000">July 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>

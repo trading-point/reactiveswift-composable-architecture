@@ -14,7 +14,6 @@
             </strong>
             <span>Documentation</span>
         </a>
-        <sup>Beta</sup>
     </header>
 
     <!--
@@ -38,8 +37,8 @@
 </h1>
 
 <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">macCatalyst</span> <span class="number literal">13</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
-  <span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">AlertState</span>&lt;<span class="variable">Action</span>&gt; </code></pre>
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">macCatalyst</span> <span class="number literal">13</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+  <span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">AlertState</span>&lt;<span class="variable">Action</span>&gt;  </body></html></code></pre>
 </div>
 <div class="summary" role="doc-abstract">
     <p>A data type that describes the state of an alert that can be shown to the user. The <code>Action</code>
@@ -69,7 +68,7 @@ testability on all parts of your application.</p>
 <code>nil</code>:</p>
 
 <html><body><pre class="highlight"><code><span class="keyword">struct</span> <span class="type">AppState</span>: <span class="type">Equatable</span> {
-  <span class="keyword">var</span> <span class="variable">alert</span> = <span class="variable">AlertState</span>&lt;<span class="type">AppAction</span>&gt;?
+  <span class="keyword">var</span> <span class="variable">alert</span>: <span class="type">AlertState</span>&lt;<span class="type">AppAction</span>&gt;?
 
   <span class="comment">// Your other state</span>
 }
@@ -120,17 +119,17 @@ can handle its logic.</p>
 )
 
 <span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">deleteTapped</span>) {
-    <span class="variable">$0</span>.<span class="variable">alert</span> = .<span class="variable">init</span>(
-      <span class="variable">title</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>(<span class="string literal">"</span><span class="string literal">Delete</span><span class="string literal">"</span>),
-      <span class="variable">message</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>(<span class="string literal">"</span><span class="string literal">Are you sure you want to delete this? It cannot be undone.</span><span class="string literal">"</span>),
-      <span class="variable">primaryButton</span>: .<span class="variable">default</span>(<span class="variable">TextState</span>(<span class="string literal">"</span><span class="string literal">Confirm</span><span class="string literal">"</span>), <span class="variable">send</span>: .<span class="variable">confirmTapped</span>),
-      <span class="variable">secondaryButton</span>: .<span class="variable">cancel</span>(<span class="variable">send</span>: .<span class="variable">cancelTapped</span>)
-    )
+  <span class="variable">$0</span>.<span class="variable">alert</span> = .<span class="variable">init</span>(
+    <span class="variable">title</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>(<span class="string literal">"</span><span class="string literal">Delete</span><span class="string literal">"</span>),
+    <span class="variable">message</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>(<span class="string literal">"</span><span class="string literal">Are you sure you want to delete this? It cannot be undone.</span><span class="string literal">"</span>),
+    <span class="variable">primaryButton</span>: .<span class="variable">default</span>(<span class="variable">TextState</span>(<span class="string literal">"</span><span class="string literal">Confirm</span><span class="string literal">"</span>), <span class="variable">send</span>: .<span class="variable">confirmTapped</span>),
+    <span class="variable">secondaryButton</span>: .<span class="variable">cancel</span>(<span class="variable">send</span>: .<span class="variable">cancelTapped</span>)
+  )
 }
 <span class="variable">store</span>.<span class="variable">send</span>(.<span class="variable">deleteTapped</span>) {
-    <span class="variable">$0</span>.<span class="variable">alert</span> = <span class="keyword">nil</span>
-    <span class="comment">// Also verify that delete logic executed correctly</span>
-  }
+  <span class="variable">$0</span>.<span class="variable">alert</span> = <span class="keyword">nil</span>
+  <span class="comment">// Also verify that delete logic executed correctly</span>
+}
 </code></pre></body></html>
 </div>
 <section id="relationships">
@@ -141,59 +140,59 @@ can handle its logic.</p>
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
-<!-- Title: %93 Pages: 1 -->
+<!-- Title: %97 Pages: 1 -->
 <svg width="1070pt" height="242pt"
  viewBox="0.00 0.00 1070.38 241.73" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 237.7326)">
-<title>%93</title>
+<title>%97</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-237.7326 1066.3791,-237.7326 1066.3791,4 -4,4"/>
 <!-- AlertState -->
 <g id="node1" class="node structure current">
 <title>AlertState</title>
 <g id="a_node1"><a xlink:href="/reactiveswift-composable-architecture/AlertState" xlink:title="AlertState">
-<path fill="none" stroke="#000000" stroke-width="3" d="M541.31,-143.6386C541.31,-143.6386 349.31,-143.6386 349.31,-143.6386 343.31,-143.6386 337.31,-137.6386 337.31,-131.6386 337.31,-131.6386 337.31,-119.6386 337.31,-119.6386 337.31,-113.6386 343.31,-107.6386 349.31,-107.6386 349.31,-107.6386 541.31,-107.6386 541.31,-107.6386 547.31,-107.6386 553.31,-113.6386 553.31,-119.6386 553.31,-119.6386 553.31,-131.6386 553.31,-131.6386 553.31,-137.6386 547.31,-143.6386 541.31,-143.6386"/>
-<text text-anchor="middle" x="445.31" y="-121.9386" font-family="Menlo" font-size="14.00" fill="#000000">AlertState</text>
+<path fill="none" stroke="#000000" stroke-width="3" d="M524.81,-143.6386C524.81,-143.6386 332.81,-143.6386 332.81,-143.6386 326.81,-143.6386 320.81,-137.6386 320.81,-131.6386 320.81,-131.6386 320.81,-119.6386 320.81,-119.6386 320.81,-113.6386 326.81,-107.6386 332.81,-107.6386 332.81,-107.6386 524.81,-107.6386 524.81,-107.6386 530.81,-107.6386 536.81,-113.6386 536.81,-119.6386 536.81,-119.6386 536.81,-131.6386 536.81,-131.6386 536.81,-137.6386 530.81,-143.6386 524.81,-143.6386"/>
+<text text-anchor="middle" x="428.81" y="-121.9386" font-family="Menlo" font-size="14.00" fill="#000000">AlertState</text>
 </a>
 </g>
 </g>
-<!-- Hashable -->
-<g id="node2" class="node unknown">
-<title>Hashable</title>
-<path fill="none" stroke="#000000" d="M1050.3791,-161.3055C1050.3791,-161.3055 858.3791,-161.3055 858.3791,-161.3055 852.3791,-161.3055 846.3791,-155.3055 846.3791,-149.3055 846.3791,-149.3055 846.3791,-137.3055 846.3791,-137.3055 846.3791,-131.3055 852.3791,-125.3055 858.3791,-125.3055 858.3791,-125.3055 1050.3791,-125.3055 1050.3791,-125.3055 1056.3791,-125.3055 1062.3791,-131.3055 1062.3791,-137.3055 1062.3791,-137.3055 1062.3791,-149.3055 1062.3791,-149.3055 1062.3791,-155.3055 1056.3791,-161.3055 1050.3791,-161.3055"/>
-<text text-anchor="middle" x="954.3791" y="-139.6055" font-family="Menlo" font-size="14.00" fill="#000000">Hashable</text>
-</g>
-<!-- AlertState&#45;&gt;Hashable -->
-<g id="edge1" class="edge conformsTo">
-<title>AlertState&#45;&gt;Hashable</title>
-<path fill="none" stroke="#000000" d="M553.5819,-129.3961C636.5631,-132.2759 750.9374,-136.2452 836.2722,-139.2067"/>
-<polygon fill="#000000" stroke="#000000" points="836.1527,-142.7045 846.2681,-139.5536 836.3956,-135.7087 836.1527,-142.7045"/>
-</g>
-<!-- Equatable -->
-<g id="node3" class="node unknown">
-<title>Equatable</title>
-<path fill="none" stroke="#000000" d="M358.401,-36C358.401,-36 166.401,-36 166.401,-36 160.401,-36 154.401,-30 154.401,-24 154.401,-24 154.401,-12 154.401,-12 154.401,-6 160.401,0 166.401,0 166.401,0 358.401,0 358.401,0 364.401,0 370.401,-6 370.401,-12 370.401,-12 370.401,-24 370.401,-24 370.401,-30 364.401,-36 358.401,-36"/>
-<text text-anchor="middle" x="262.401" y="-14.3" font-family="Menlo" font-size="14.00" fill="#000000">Equatable</text>
-</g>
-<!-- AlertState&#45;&gt;Equatable -->
-<g id="edge2" class="edge conformsTo">
-<title>AlertState&#45;&gt;Equatable</title>
-<path fill="none" stroke="#000000" d="M414.6951,-107.6223C383.7009,-89.3828 335.6446,-61.1025 301.8203,-41.1975"/>
-<polygon fill="#000000" stroke="#000000" points="303.5093,-38.1304 293.1157,-36.0751 299.959,-44.1633 303.5093,-38.1304"/>
-</g>
 <!-- CustomDebugOutputConvertible -->
-<g id="node4" class="node protocol">
+<g id="node2" class="node protocol">
 <title>CustomDebugOutputConvertible</title>
-<g id="a_node4"><a xlink:href="/reactiveswift-composable-architecture/CustomDebugOutputConvertible" xlink:title="CustomDebugOutputConvertible">
-<path fill="none" stroke="#000000" d="M237,-233.7326C237,-233.7326 12,-233.7326 12,-233.7326 6,-233.7326 0,-227.7326 0,-221.7326 0,-221.7326 0,-209.7326 0,-209.7326 0,-203.7326 6,-197.7326 12,-197.7326 12,-197.7326 237,-197.7326 237,-197.7326 243,-197.7326 249,-203.7326 249,-209.7326 249,-209.7326 249,-221.7326 249,-221.7326 249,-227.7326 243,-233.7326 237,-233.7326"/>
-<text text-anchor="middle" x="124.5" y="-212.0326" font-family="Menlo" font-size="14.00" fill="#000000">CustomDebugOutputConvertible</text>
+<g id="a_node2"><a xlink:href="/reactiveswift-composable-architecture/CustomDebugOutputConvertible" xlink:title="CustomDebugOutputConvertible">
+<path fill="none" stroke="#000000" d="M1050.3791,-161.3055C1050.3791,-161.3055 825.3791,-161.3055 825.3791,-161.3055 819.3791,-161.3055 813.3791,-155.3055 813.3791,-149.3055 813.3791,-149.3055 813.3791,-137.3055 813.3791,-137.3055 813.3791,-131.3055 819.3791,-125.3055 825.3791,-125.3055 825.3791,-125.3055 1050.3791,-125.3055 1050.3791,-125.3055 1056.3791,-125.3055 1062.3791,-131.3055 1062.3791,-137.3055 1062.3791,-137.3055 1062.3791,-149.3055 1062.3791,-149.3055 1062.3791,-155.3055 1056.3791,-161.3055 1050.3791,-161.3055"/>
+<text text-anchor="middle" x="937.8791" y="-139.6055" font-family="Menlo" font-size="14.00" fill="#000000">CustomDebugOutputConvertible</text>
 </a>
 </g>
 </g>
 <!-- AlertState&#45;&gt;CustomDebugOutputConvertible -->
-<g id="edge3" class="edge conformsTo">
+<g id="edge2" class="edge conformsTo">
 <title>AlertState&#45;&gt;CustomDebugOutputConvertible</title>
-<path fill="none" stroke="#000000" d="M381.1604,-143.6539C328.4629,-158.4531 253.7708,-179.4291 198.5415,-194.9393"/>
-<polygon fill="#000000" stroke="#000000" points="197.494,-191.598 188.8128,-197.6715 199.3867,-198.3373 197.494,-191.598"/>
+<path fill="none" stroke="#000000" d="M537.0819,-129.3961C614.789,-132.0929 720.0255,-135.745 803.1649,-138.6303"/>
+<polygon fill="#000000" stroke="#000000" points="803.0755,-142.1292 813.1909,-138.9783 803.3184,-135.1334 803.0755,-142.1292"/>
+</g>
+<!-- Hashable -->
+<g id="node3" class="node unknown">
+<title>Hashable</title>
+<path fill="none" stroke="#000000" d="M341.901,-36C341.901,-36 149.901,-36 149.901,-36 143.901,-36 137.901,-30 137.901,-24 137.901,-24 137.901,-12 137.901,-12 137.901,-6 143.901,0 149.901,0 149.901,0 341.901,0 341.901,0 347.901,0 353.901,-6 353.901,-12 353.901,-12 353.901,-24 353.901,-24 353.901,-30 347.901,-36 341.901,-36"/>
+<text text-anchor="middle" x="245.901" y="-14.3" font-family="Menlo" font-size="14.00" fill="#000000">Hashable</text>
+</g>
+<!-- AlertState&#45;&gt;Hashable -->
+<g id="edge3" class="edge conformsTo">
+<title>AlertState&#45;&gt;Hashable</title>
+<path fill="none" stroke="#000000" d="M398.1951,-107.6223C367.2009,-89.3828 319.1446,-61.1025 285.3203,-41.1975"/>
+<polygon fill="#000000" stroke="#000000" points="287.0093,-38.1304 276.6157,-36.0751 283.459,-44.1633 287.0093,-38.1304"/>
+</g>
+<!-- Equatable -->
+<g id="node4" class="node unknown">
+<title>Equatable</title>
+<path fill="none" stroke="#000000" d="M204,-233.7326C204,-233.7326 12,-233.7326 12,-233.7326 6,-233.7326 0,-227.7326 0,-221.7326 0,-221.7326 0,-209.7326 0,-209.7326 0,-203.7326 6,-197.7326 12,-197.7326 12,-197.7326 204,-197.7326 204,-197.7326 210,-197.7326 216,-203.7326 216,-209.7326 216,-209.7326 216,-221.7326 216,-221.7326 216,-227.7326 210,-233.7326 204,-233.7326"/>
+<text text-anchor="middle" x="108" y="-212.0326" font-family="Menlo" font-size="14.00" fill="#000000">Equatable</text>
+</g>
+<!-- AlertState&#45;&gt;Equatable -->
+<g id="edge1" class="edge conformsTo">
+<title>AlertState&#45;&gt;Equatable</title>
+<path fill="none" stroke="#000000" d="M364.6604,-143.6539C311.9629,-158.4531 237.2708,-179.4291 182.0415,-194.9393"/>
+<polygon fill="#000000" stroke="#000000" points="180.994,-191.598 172.3128,-197.6715 182.8867,-198.3373 180.994,-191.598"/>
 </g>
 </g>
 </svg>
@@ -219,56 +218,56 @@ can handle its logic.</p>
 
         <div role="article" class="initializer" id="alertstate.init(title:message:dismissbutton:)">
     <h3>
-        <code>init(title:​message:​dismiss​Button:​)</code>
+        <code><a href="#alertstate.init(title:message:dismissbutton:)">init(title:​message:​dismiss​Button:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">&quot;&apos;title&apos; and &apos;message&apos; should be &apos;TextState&apos;&quot;</span>)
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">"'title' and 'message' should be 'TextState'"</span>)
     <span class="attribute">@</span><span class="attribute">_disfavoredOverload</span>
     <span class="keyword">public</span> <span class="keyword">init</span>(
       <span class="variable">title</span>: <span class="type">LocalizedStringKey</span>,
       <span class="variable">message</span>: <span class="type">LocalizedStringKey</span>? = <span class="keyword">nil</span>,
       <span class="variable">dismissButton</span>: <span class="type">Button</span>? = <span class="keyword">nil</span>
-    ) </code></pre>
+    )  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="initializer" id="alertstate.init(title:message:primarybutton:secondarybutton:)">
     <h3>
-        <code>init(title:​message:​primary​Button:​secondary​Button:​)</code>
+        <code><a href="#alertstate.init(title:message:primarybutton:secondarybutton:)">init(title:​message:​primary​Button:​secondary​Button:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">&quot;&apos;title&apos; and &apos;message&apos; should be &apos;TextState&apos;&quot;</span>)
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(*, <span class="variable">deprecated</span>, <span class="variable">message</span>: <span class="string literal">"'title' and 'message' should be 'TextState'"</span>)
     <span class="attribute">@</span><span class="attribute">_disfavoredOverload</span>
     <span class="keyword">public</span> <span class="keyword">init</span>(
       <span class="variable">title</span>: <span class="type">LocalizedStringKey</span>,
       <span class="variable">message</span>: <span class="type">LocalizedStringKey</span>? = <span class="keyword">nil</span>,
       <span class="variable">primaryButton</span>: <span class="type">Button</span>,
       <span class="variable">secondaryButton</span>: <span class="type">Button</span>
-    ) </code></pre>
+    )  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="initializer" id="alertstate.init(title:message:dismissbutton:)">
     <h3>
-        <code>init(title:​message:​dismiss​Button:​)</code>
+        <code><a href="#alertstate.init(title:message:dismissbutton:)">init(title:​message:​dismiss​Button:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(
-      <span class="variable">title</span>: <span class="type">TextState</span>,
-      <span class="variable">message</span>: <span class="type">TextState</span>? = <span class="keyword">nil</span>,
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">init</span>(
+      <span class="variable">title</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>,
+      <span class="variable">message</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>? = <span class="keyword">nil</span>,
       <span class="variable">dismissButton</span>: <span class="type">Button</span>? = <span class="keyword">nil</span>
-    ) </code></pre>
+    )  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="initializer" id="alertstate.init(title:message:primarybutton:secondarybutton:)">
     <h3>
-        <code>init(title:​message:​primary​Button:​secondary​Button:​)</code>
+        <code><a href="#alertstate.init(title:message:primarybutton:secondarybutton:)">init(title:​message:​primary​Button:​secondary​Button:​)</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">init</span>(
-      <span class="variable">title</span>: <span class="type">TextState</span>,
-      <span class="variable">message</span>: <span class="type">TextState</span>? = <span class="keyword">nil</span>,
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">init</span>(
+      <span class="variable">title</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>,
+      <span class="variable">message</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>? = <span class="keyword">nil</span>,
       <span class="variable">primaryButton</span>: <span class="type">Button</span>,
       <span class="variable">secondaryButton</span>: <span class="type">Button</span>
-    ) </code></pre>
+    )  </body></html></code></pre>
 </div>
 </div>
     </section>
@@ -277,50 +276,50 @@ can handle its logic.</p>
 
         <div role="article" class="variable" id="alertstate.id">
     <h3>
-        <code>id</code>
+        <code><a href="#alertstate.id">id</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">id</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">id</span>  </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="variable" id="alertstate.message">
     <h3>
-        <code>message</code>
+        <code><a href="#alertstate.message">message</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">message</span>: <span class="type">TextState</span>?</code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">message</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a>? </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="variable" id="alertstate.primarybutton">
     <h3>
-        <code>primary​Button</code>
+        <code><a href="#alertstate.primarybutton">primary​Button</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">primaryButton</span>: <span class="type">Button</span>?</code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">primaryButton</span>: <span class="type">Button</span>? </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="variable" id="alertstate.secondarybutton">
     <h3>
-        <code>secondary​Button</code>
+        <code><a href="#alertstate.secondarybutton">secondary​Button</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">secondaryButton</span>: <span class="type">Button</span>?</code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">secondaryButton</span>: <span class="type">Button</span>? </body></html></code></pre>
 </div>
 </div>
 <div role="article" class="variable" id="alertstate.title">
     <h3>
-        <code>title</code>
+        <code><a href="#alertstate.title">title</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">title</span>: <span class="type">TextState</span></code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">title</span>: <a href="/reactiveswift-composable-architecture/TextState"><span class="type">TextState</span></a></body></html></code></pre>
 </div>
 </div>
 <div role="article" class="variable" id="alertstate.debugoutput">
     <h3>
-        <code>debug​Output</code>
+        <code><a href="#alertstate.debugoutput">debug​Output</a></code>
     </h3>
     <div class="declaration">
-<pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">debugOutput</span>: <span class="type">String</span> </code></pre>
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">var</span> <span class="variable">debugOutput</span>: <span class="type">String</span>  </body></html></code></pre>
 </div>
 </div>
     </section>
@@ -332,7 +331,7 @@ can handle its logic.</p>
 
     <footer>
         <p>
-    Generated on <time datetime="2021-04-27T09:43:55+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
+    Generated on <time datetime="2021-07-20T18:24:59+0000">July 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>

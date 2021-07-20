@@ -14,7 +14,6 @@
             </strong>
             <span>Documentation</span>
         </a>
-        <sup>Beta</sup>
     </header>
 
     <!--
@@ -36,6 +35,14 @@
         <h2>Classes</h2>
         <dl>
             <dt class="class">
+    <a href="/reactiveswift-composable-architecture/FailingScheduler" title="class - FailingScheduler">
+        Failing​Scheduler
+    </a>
+</dt>
+<dd>
+    
+</dd>
+<dt class="class">
     <a href="/reactiveswift-composable-architecture/Store" title="class - Store">
         Store
     </a>
@@ -122,15 +129,6 @@ an action, and describes what <code>Effect</code>s should be executed later by t
 
 </dd>
 <dt class="structure">
-    <a href="/reactiveswift-composable-architecture/Produced" title="structure - Produced">
-        Produced
-    </a>
-</dt>
-<dd>
-    <p>A producer of store state.</p>
-
-</dd>
-<dt class="structure">
     <a href="/reactiveswift-composable-architecture/ActionSheetState" title="structure - ActionSheetState">
         Action​Sheet​State
     </a>
@@ -192,7 +190,9 @@ collections of state.</p>
     </a>
 </dt>
 <dd>
-    <p>An array of elements that can be identified by a given key path.</p>
+    <p>An array of elements that can be identified by a given key path.
+<code> A useful container of state that is intended to interface with SwiftUI/</code>ForEach`. For example,
+your application may model a counter in an identifiable fashion:</p>
 
 </dd>
 <dt class="structure">
@@ -203,6 +203,41 @@ collections of state.</p>
 <dd>
     <p>A view that safely unwraps a store of optional state in order to show one of two views.</p>
 
+</dd>
+<dt class="structure">
+    <a href="/reactiveswift-composable-architecture/SwitchStore" title="structure - SwitchStore">
+        Switch​Store
+    </a>
+</dt>
+<dd>
+    <p>A view that can switch over a store of enum state and handle each case.</p>
+
+</dd>
+<dt class="structure">
+    <a href="/reactiveswift-composable-architecture/CaseLet" title="structure - CaseLet">
+        Case​Let
+    </a>
+</dt>
+<dd>
+    <p>A view that handles a specific case of enum state in a <code>SwitchStore</code>.</p>
+
+</dd>
+<dt class="structure">
+    <a href="/reactiveswift-composable-architecture/Default" title="structure - Default">
+        Default
+    </a>
+</dt>
+<dd>
+    <p>A view that covers any cases that aren't addressed in a <code>SwitchStore</code>.</p>
+
+</dd>
+<dt class="structure">
+    <a href="/reactiveswift-composable-architecture/_ExhaustivityCheckView" title="structure - _ExhaustivityCheckView">
+        _Exhaustivity​Check​View
+    </a>
+</dt>
+<dd>
+    
 </dd>
 <dt class="structure">
     <a href="/reactiveswift-composable-architecture/TextState" title="structure - TextState">
@@ -233,6 +268,14 @@ store state.</p>
     <p>A single step of a <code>TestStore</code> assertion.</p>
 
 </dd>
+<dt class="structure">
+    <a href="/reactiveswift-composable-architecture/StoreProducer" title="structure - StoreProducer">
+        Store​Producer
+    </a>
+</dt>
+<dd>
+    
+</dd>
         </dl>
     </section>
     <section id="enumerations">
@@ -244,7 +287,7 @@ store state.</p>
     </a>
 </dt>
 <dd>
-    <p>Determines how the string description of an action should be printed when using the <code>.debug()</code>
+    <p>Determines how the string description of an action should be printed when using the <code>Reducer/debug(prefix:state:action:environment:)</code>
 higher-order reducer.</p>
 
 </dd>
@@ -284,14 +327,6 @@ higher-order reducer.</p>
 data back to the <code>Store</code>. It is the perfect place to do side effects, such as network requests,
 saving/loading from disk, creating timers, interacting with dependencies, and more.</p>
 
-</dd>
-<dt class="typealias">
-    <a href="/reactiveswift-composable-architecture/StoreProducer" title="typealias - StoreProducer">
-        Store​Producer
-    </a>
-</dt>
-<dd>
-    
 </dd>
 <dt class="typealias">
     <a href="/reactiveswift-composable-architecture/IdentifiedArrayOf" title="typealias - IdentifiedArrayOf">
@@ -338,7 +373,7 @@ saving/loading from disk, creating timers, interacting with dependencies, and mo
 
     <footer>
         <p>
-    Generated on <time datetime="2021-04-27T09:43:55+0000">April 27, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
+    Generated on <time datetime="2021-07-20T18:24:59+0000">July 20, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
 </p>
     </footer>
 </body>
